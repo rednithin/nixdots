@@ -81,7 +81,10 @@
     };
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    extraOptions = ''--insecure-registry "http://139.59.219.55:5000"'';
+  };
   users.users.nithin.extraGroups = [ "docker" ];
 
   
@@ -106,6 +109,16 @@
         profile = "${pkgs.firejail}/etc/firejail/spotify.profile";
         desktop = "${pkgs.spotify}/share/applications/spotify.desktop";
       };
+      # steam = {
+      #   executable = "${pkgs.lib.getBin pkgs.steam}/bin/steam";
+      #   profile = "${pkgs.firejail}/etc/firejail/steam.profile";
+      #   desktop = "${pkgs.steam}/share/applications/steam.desktop";
+      # };
+      # steam-run = {
+      #   executable = "${pkgs.lib.getBin pkgs.steam-run}/bin/steam-run";
+      #   profile = "${pkgs.firejail}/etc/firejail/steam-run.profile";
+      #   # desktop = "${pkgs.steam-run}/share/applications/steam-run.desktop";
+      # };
     };
   };
   
@@ -118,6 +131,10 @@
     ignore noexec ''${HOME}
     ignore noroot
   '';
+
+  # environment.etc."firejail/steam.local".text = ''
+  #   whitelist ''${HOME}/HDD
+  # '';
 
 
   programs.firefox.preferences = {
@@ -147,4 +164,15 @@
   #     };
   #   };
   # };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
+
+  fileSystems."/home/nithin/HDD" = { 
+    device = "/dev/disk/by-uuid/9f66e623-f475-40ad-8a7c-97518b4f0656";
+    fsType = "ext4";
+  };
 }
