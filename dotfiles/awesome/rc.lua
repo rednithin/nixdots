@@ -561,7 +561,11 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
+                     placement = awful.placement.no_overlap+awful.placement.no_offscreen,
+                     maximized_vertical   = false,
+                     maximized_horizontal = false,
+                     floating = false,
+                     maximized = false
      }
     },
 
@@ -619,7 +623,7 @@ awful.rules.rules = {
     properties = { screen = 1, tag = "2" } },
 
     { rule = { name = "Mozilla Firefox" },
-    properties = { screen = 1, tag = "5" } },
+    properties = { screen = 1, tag = "5", floating = false } },
 
     { rule = { class = "[Gg]oogle%-chrome" },
     properties = { screen = 1, tag = "6" } },
@@ -628,7 +632,7 @@ awful.rules.rules = {
     properties = { screen = 1, tag = "8" } },
 
     { rule = { class = "[Ss]potify" },
-    properties = { screen = 1, tag = "9" } },
+    properties = { screen = 1, tag = "9", floating = false } },
 }
 -- }}}
 
