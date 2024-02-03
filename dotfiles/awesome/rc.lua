@@ -616,7 +616,7 @@ awful.rules.rules = {
     { rule = { class = "[Cc]ode" },
     properties = { screen = 1, tag = "1" } },
 
-    { rule = { class = "[Aa]lacritty" },
+    { rule = { class = "org.wezfurlong.wezterm" },
     properties = { screen = 1, tag = "3" } },
 
     { rule = { class = "[Dd]olphin" },
