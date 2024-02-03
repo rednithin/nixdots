@@ -55,7 +55,7 @@ end
 beautiful.init("~/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "alacritty" -- MODIFIED
+terminal = "wezterm" -- MODIFIED
 -- editor = os.getenv("EDITOR") or "nano"
 editor = "code" -- MODIFIED
 editor_cmd = terminal .. " -e " .. editor
@@ -739,7 +739,7 @@ function class_matcher(c) return c.class end
 awful.spawn.once("google-chrome-stable --incognito", {}, class_matcher)
 awful.spawn.once("spotify", {}, class_matcher)
 awful.spawn.once("dolphin", {}, class_matcher)
-awful.spawn.once("alacritty", {}, class_matcher)
+awful.spawn.once("wezterm", {}, class_matcher)
 awful.spawn.once("code", {}, class_matcher)
 -- awful.spawn.once("telegram-desktop", {}, class_matcher)
 -- awful.spawn.once("discord", {}, class_matcher)
