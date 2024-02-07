@@ -19,33 +19,23 @@ function disk() {
 
 function vol() {
   # bat /proc/asound/cards
-  SINK_INDEX=$(pacmd list-sinks | grep index | grep "*" | cut -d ":" -f 2)
-  VOLUME="$(pamixer --get-volume)%"
+  VOLUME="$(amixer sget Master | awk -F"[][]" '/Left:/ { print $2 }')"
   echo "🔉 $VOLUME"
 }
 
 function increase_vol() {
   # bat /proc/asound/cards
-  SINK_INDEX=$(pacmd list-sinks | grep index | grep "*" | cut -d ":" -f 2)
-  VOLUME=$(pamixer --get-volume)
-  if [[ $VOLUME -le 95 ]]
-  then
-      pactl set-sink-volume $SINK_INDEX +5% 
-  fi
+  amixer sset Master 5%+
 }
 
 function decrease_vol() {
   # bat /proc/asound/cards
-  SINK_INDEX=$(pacmd list-sinks | grep index | grep "*" | cut -d ":" -f 2)
-  VOLUME=$(pamixer --get-volume)
-  pactl set-sink-volume $SINK_INDEX -5% 
+  amixer sset Master 5%-
 }
 
 function mute_vol() {
   # bat /proc/asound/cards
-  SINK_INDEX=$(pacmd list-sinks | grep index | grep "*" | cut -d ":" -f 2)
-  VOLUME=$(pamixer --get-volume)
-  pactl set-sink-volume $SINK_INDEX 0 
+  amixer sset Master 0%
 }
 
 
