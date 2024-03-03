@@ -732,7 +732,7 @@ awful.spawn.with_shell("nitrogen --restore")
 awful.spawn.with_shell("/usr/lib/polkit-kde-authentication-agent-1")
 awful.spawn.with_shell("bash .screenlayout/arandr.sh")
 awful.spawn.with_shell("picom --config ~/.config/picom/picom.conf")
--- awful.util.spawn_with_shell('~/.config/awesome/locker.sh')
+awful.util.spawn_with_shell('~/.config/awesome/locker.sh')
 
 function class_matcher(c) return c.class end
 

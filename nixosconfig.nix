@@ -178,14 +178,14 @@
   };
 
 
-  services.xserver.xautolock = {
-    enable = true;
-    enableNotifier = true;
-    locker = "${pkgs.i3lock}/bin/i3lock -n -c 4B0082";
-    notify = 10;
-    time = 1;
-    notifier = ''${pkgs.libnotify}/bin/notify-send -u critical "Locking Screen" "Locking in 10 seconds"'';
-    killtime = 10;
-    extraOptions = [ ''-corners "----" -cornersize 100'' ];
-  };
+  # services.xserver.xautolock = {
+  #   enable = true;
+  #   enableNotifier = true;
+  #   locker = "${pkgs.i3lock}/bin/i3lock -n -c 4B0082";
+  #   notify = 10;
+  #   time = 1;
+  #   notifier = ''${pkgs.libnotify}/bin/notify-send -u critical "Locking Screen" "Locking in 10 seconds"'';
+  #   killtime = 10;
+  #   extraOptions = [ ''-corners "----" -cornersize 100'' ];
+  # };
 }
