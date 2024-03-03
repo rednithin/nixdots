@@ -65,6 +65,8 @@
     xautolock
     flameshot
     davinci-resolve-studio
+    libnotify
+    i3lock
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
@@ -122,5 +124,9 @@
       recursive = true;
       source = ./dotfiles/awesome;
     };
+
+    # ".steam/steam/steam_dev.cfg".text = ''
+    #   unShaderBackgroundProcessingThreads 12
+    # '';
   };
 }

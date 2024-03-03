@@ -176,4 +176,15 @@
     device = "/dev/disk/by-uuid/9f66e623-f475-40ad-8a7c-97518b4f0656";
     fsType = "ext4";
   };
+
+
+  services.xserver.xautolock = {
+    enable = true;
+    enableNotifier = true;
+    locker = "${pkgs.i3lock}/bin/i3lock";
+    notify = 30;
+    time = 1;
+    notifier = ''${pkgs.libnotify}/bin/notify-send -u critical "Locking Screen" "Locking in 30 seconds"'';
+    extraOptions = [ "-corners 0000 -cornersize 15" ];
+  };
 }
