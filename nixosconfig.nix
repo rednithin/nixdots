@@ -181,10 +181,11 @@
   services.xserver.xautolock = {
     enable = true;
     enableNotifier = true;
-    locker = "${pkgs.i3lock}/bin/i3lock";
-    notify = 30;
+    locker = "${pkgs.i3lock}/bin/i3lock -n -c 4B0082";
+    notify = 10;
     time = 1;
-    notifier = ''${pkgs.libnotify}/bin/notify-send -u critical "Locking Screen" "Locking in 30 seconds"'';
-    extraOptions = [ "-corners 0000 -cornersize 15" ];
+    notifier = ''${pkgs.libnotify}/bin/notify-send -u critical "Locking Screen" "Locking in 10 seconds"'';
+    killtime = 10;
+    extraOptions = [ ''-corners "----" -cornersize 100'' ];
   };
 }
