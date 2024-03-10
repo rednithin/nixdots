@@ -100,6 +100,12 @@
         desktop = "${pkgs.firefox}/share/applications/firefox.desktop";
         # extraArgs = [ "--browser-allow-drm --browser-disable-u2f=no" ];
       };
+      floorp = {
+        executable = "${pkgs.lib.getBin pkgs.floorp}/bin/floorp";
+        profile = "${pkgs.firejail}/etc/firejail/floorp.profile";
+        desktop = "${pkgs.floorp}/share/applications/floorp.desktop";
+        # extraArgs = [ "--browser-allow-drm --browser-disable-u2f=no" ];
+      };
       chromium = {
         executable = "${pkgs.lib.getBin pkgs.chromium}/bin/chromium";
         profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
