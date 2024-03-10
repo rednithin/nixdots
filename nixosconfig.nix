@@ -188,4 +188,6 @@
   #   killtime = 10;
   #   extraOptions = [ ''-corners "----" -cornersize 100'' ];
   # };
+
+  programs.ssh.startAgent = true;
 }

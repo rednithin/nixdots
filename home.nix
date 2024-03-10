@@ -128,5 +128,13 @@
     # ".steam/steam/steam_dev.cfg".text = ''
     #   unShaderBackgroundProcessingThreads 12
     # '';
+
+    ".ssh/config".text = ''
+      Host github.com
+        User nithin
+        Hostname github.com
+        PreferredAuthentications publickey
+        IdentityFile /home/nithin/.ssh/github
+    '';
   };
 }
