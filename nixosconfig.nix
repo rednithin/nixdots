@@ -121,6 +121,11 @@
         profile = "${pkgs.firejail}/etc/firejail/spotify.profile";
         desktop = "${pkgs.spotify}/share/applications/spotify.desktop";
       };
+      # postman = {
+      #   executable = "${pkgs.lib.getBin pkgs.postman}/bin/postman";
+      #   profile = "${pkgs.firejail}/etc/firejail/Postman.profile";
+      #   desktop = "${pkgs.postman}/share/applications/postman.desktop";
+      # };
       # steam = {
       #   executable = "${pkgs.lib.getBin pkgs.steam}/bin/steam";
       #   profile = "${pkgs.firejail}/etc/firejail/steam.profile";
