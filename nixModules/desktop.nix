@@ -38,4 +38,10 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
   
+
+  programs.hyprland = {
+    enable = true;
+    enableNvidiaPatches = true;
+    xwayland.enable = true;
+  };
 }

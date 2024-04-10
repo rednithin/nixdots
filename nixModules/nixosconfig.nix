@@ -12,11 +12,7 @@
   hardware.bluetooth.powerOnBoot = true;
 
   services.xserver.windowManager.awesome.enable = true;
-  programs.hyprland = {
-    enable = true;
-    enableNvidiaPatches = true;
-    xwayland.enable = true;
-  };
+  
 
   
   environment.sessionVariables = {
