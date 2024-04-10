@@ -1,8 +1,8 @@
-{}:
+{...}:
 
 {
     home.file = {
-        ".Xresources".test = ''
+        ".Xresources".text = ''
             Xft.dpi: 255
 
             ! These might also be useful depending on your monitor and personal preference:
@@ -12,6 +12,6 @@
             Xft.hinting: 1
             Xft.antialias: 1
             Xft.rgba: rgb
-        ''
-    }
+        '';
+    };
 }
