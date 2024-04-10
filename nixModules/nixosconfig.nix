@@ -1,9 +1,9 @@
-{ config, pkgs, inputs, pkgs-unstable, ... }:
+{ config, pkgs, inputs, pkgs-unstable, home-manager, ... }:
 
 {
   imports = 
   [ 
-    inputs.home-manager.nixosModules.default
+    home-manager.nixosModules.default
   ];
 
   users.users.nithin.shell = pkgs.fish;
@@ -40,7 +40,7 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; inherit pkgs-unstable; };
+    extraSpecialArgs = { inherit inputs; };
     users = {
       nithin = {
         imports = [ ../homeModules/home.nix ];
