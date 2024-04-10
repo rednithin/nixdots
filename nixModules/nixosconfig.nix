@@ -40,7 +40,7 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs; inherit pkgs-unstable; };
     users = {
       nithin = {
         imports = [ ../homeModules/home.nix ];

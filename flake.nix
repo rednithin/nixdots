@@ -10,7 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     home-manager-unstable = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
