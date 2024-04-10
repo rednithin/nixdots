@@ -18,26 +18,26 @@
   outputs = { self, nixpkgs-stable, nixpkgs-unstable, home-manager-stable, home-manager-unstable, ... }@inputs:
     let
       system = "x86_64-linux";
-      pkgs-stable = nixpkgs-stable.legacyPackages.${system};
-      pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
-      nixpkgs = if (builtins.hostName == "laptop") then nixpkgs-unstable else nixpkgs-stable;
-      pkgs = if (builtins.hostName == "laptop") then pkgs-unstable else pkgs-stable;
-      home-manager = if (builtins.hostName == "laptop") then home-manager-unstable else home-manager-stable;
+      pkgs-stable = import nixpkgs-stable{ inherit system; config.allowUnfree = true; };
+      pkgs-unstable = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
+      nixpkgs =  nixpkgs-unstable;
+      pkgs =  pkgs-unstable;
+      home-manager =  home-manager-unstable;
     in
     {
       nixosConfigurations = {
-        desktop = nixpkgs-stable.lib.nixosSystem {
-          specialArgs = {inherit inputs; inherit pkgs; inherit nixpkgs; inherit home-manager;};
+        desktop = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs; inherit pkgs; inherit nixpkgs; inherit pkgs-unstable; inherit home-manager;};
           modules = [ 
             ./hosts/desktop/configuration.nix
-            inputs.home-manager-stable.nixosModules.default
+            home-manager.nixosModules.default
           ];
         };
-        laptop = nixpkgs-unstable.lib.nixosSystem {
-          specialArgs = {inherit inputs; inherit pkgs; inherit nixpkgs; inherit home-manager;};
+        laptop = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs; inherit pkgs; inherit nixpkgs; inherit pkgs-unstable; inherit home-manager;};
           modules = [ 
             ./hosts/laptop/configuration.nix
-            inputs.home-manager-unstable.nixosModules.default
+            home-manager.nixosModules.default
           ];
         };
       };
