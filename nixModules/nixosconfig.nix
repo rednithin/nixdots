@@ -1,10 +1,6 @@
-{ config, pkgs, inputs, pkgs-unstable, home-manager, ... }:
+{ config, pkgs, inputs, pkgs-unstable,  ... }:
 
 {
-  imports = 
-  [ 
-    home-manager.nixosModules.default
-  ];
 
   users.users.nithin.shell = pkgs.fish;
 
@@ -38,15 +34,6 @@
 
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; inherit pkgs-unstable; };
-    users = {
-      nithin = {
-        imports = [ ../homeModules/home.nix ];
-      };
-    };
-  };
 
   virtualisation.docker = {
     enable = true;
