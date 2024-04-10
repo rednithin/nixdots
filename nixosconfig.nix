@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, pkgs-unstable, ... }:
 
 {
   imports = 
@@ -74,7 +74,7 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs; inherit pkgs-unstable; };
     users = {
       nithin = {
         imports = [ ./home.nix ];
@@ -122,9 +122,9 @@
         desktop = "${pkgs.spotify}/share/applications/spotify.desktop";
       };
       # postman = {
-      #   executable = "${pkgs.lib.getBin pkgs.postman}/bin/postman";
-      #   profile = "${pkgs.firejail}/etc/firejail/Postman.profile";
-      #   desktop = "${pkgs.postman}/share/applications/postman.desktop";
+      #   executable = "${pkgs-unstable.lib.getBin pkgs-unstable.postman}/bin/postman";
+      #   profile = "${pkgs-unstable.firejail}/etc/firejail/Postman.profile";
+      #   desktop = "${pkgs-unstable.postman}/share/applications/postman.desktop";
       # };
       # steam = {
       #   executable = "${pkgs.lib.getBin pkgs.steam}/bin/steam";
