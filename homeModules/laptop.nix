@@ -3,7 +3,7 @@
 {
     home.file = {
         ".Xresources".text = ''
-            Xft.dpi: 255
+            Xft.dpi: 200
 
             ! These might also be useful depending on your monitor and personal preference:
             Xft.autohint: 0
