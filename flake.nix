@@ -20,10 +20,10 @@
     {
     
       nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
+        desktop = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs; inherit pkgs-unstable;};
           modules = [ 
-            ./configuration.nix
+            ./hosts/desktop/configuration.nix
             inputs.home-manager.nixosModules.default
           ];
         };

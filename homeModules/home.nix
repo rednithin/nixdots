@@ -128,7 +128,7 @@
   home.file = {
     ".config/awesome" = {
       recursive = true;
-      source = ./dotfiles/awesome;
+      source = ../dotfiles/awesome;
     };
 
     # ".steam/steam/steam_dev.cfg".text = ''
