@@ -77,6 +77,7 @@
     # '')
   ]) ++ (with pkgs-unstable; [
     helix
+    postman
   ]);
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
