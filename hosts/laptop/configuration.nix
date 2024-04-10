@@ -2,13 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../nixModules/nixosconfig.nix
+      ../../nixModules/laptop.nix
     ];
 
   # Bootloader.
@@ -25,7 +26,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true;
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
 
@@ -85,24 +86,10 @@
     isNormalUser = true;
     description = "Nithin";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-      kate
-    #  thunderbird
-    ];
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-	  brightnessctl
-	  neofetch
-    screenfetch
-	  git
-	  vscode
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -131,5 +118,4 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
 
-  boot.kernelPackages = pkgs.linuxPackages_6_8;
 }
