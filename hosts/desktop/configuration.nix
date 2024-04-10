@@ -8,7 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./nixosconfig.nix
+      ../../nixModules/nixosconfig.nix
+      ../../nixModules/desktop.nix
     ];
 
   # Bootloader.
