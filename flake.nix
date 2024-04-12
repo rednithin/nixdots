@@ -20,20 +20,25 @@
       system = "x86_64-linux";
       pkgs-stable = import nixpkgs-stable{ inherit system; config.allowUnfree = true; };
       pkgs-unstable = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
-      nixpkgs =  nixpkgs-unstable;
-      pkgs =  pkgs-unstable;
-      home-manager =  home-manager-unstable;
     in
     {
       nixosConfigurations = {
-        desktop = nixpkgs.lib.nixosSystem {
+        desktop = let 
+          nixpkgs =  nixpkgs-stable;
+          pkgs =  pkgs-stable;
+          home-manager =  home-manager-stable;
+        in nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs; inherit pkgs; inherit nixpkgs; inherit pkgs-unstable; inherit home-manager;};
           modules = [ 
             ./hosts/desktop/configuration.nix
             home-manager.nixosModules.default
           ];
         };
-        laptop = nixpkgs.lib.nixosSystem {
+        laptop = let 
+          nixpkgs =  nixpkgs-unstable;
+          pkgs =  pkgs-unstable;
+          home-manager =  home-manager-unstable;
+        in nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs; inherit pkgs; inherit nixpkgs; inherit pkgs-unstable; inherit home-manager;};
           modules = [ 
             ./hosts/laptop/configuration.nix
