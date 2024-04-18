@@ -24,9 +24,9 @@
     {
       nixosConfigurations = {
         desktop = let 
-          nixpkgs =  nixpkgs-stable;
-          pkgs =  pkgs-stable;
-          home-manager =  home-manager-stable;
+          nixpkgs =  nixpkgs-unstable;
+          pkgs =  pkgs-unstable;
+          home-manager =  home-manager-unstable;
         in nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs; inherit pkgs; inherit nixpkgs; inherit pkgs-unstable; inherit home-manager;};
           modules = [ 
