@@ -16,9 +16,16 @@
     #     };
     # };
 
+    services.power-profiles-daemon.enable = false;
     services.tlp = {
         enable = true;
     };
+
+    boot.postBootCommands = ''
+        #!/bin/bash
+        
+        for f in /proc/irq/*/smp_affinity_list; do echo 20-21 > $f; done
+    '';
 
     # powerManagement.powertop.enable = true;
 }
