@@ -40,7 +40,7 @@
     nil
     direnv
     ripgrep
-    nodejs
+    nodejs_20
     nodePackages.pnpm
     yarn-berry
     # floorp
