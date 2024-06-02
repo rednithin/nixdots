@@ -19,6 +19,12 @@
     XDG_CURRENT_DESKTOP = "KDE";
   };
 
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    openFirewall = true;
+  };
+
 
   programs.fish.enable = true; 
   
