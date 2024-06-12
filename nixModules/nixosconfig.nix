@@ -56,7 +56,7 @@
       firefox = {
         executable = "${pkgs.lib.getBin pkgs.firefox}/bin/firefox";
         profile = "${pkgs.firejail}/etc/firejail/firefox.profile";
-        # desktop = "${pkgs.firefox}/share/applications/firefox.desktop";
+        desktop = "${pkgs.firefox}/share/applications/firefox.desktop";
         # extraArgs = [ "--browser-allow-drm --browser-disable-u2f=no" ];
       };
       # floorp = {
@@ -68,17 +68,17 @@
       chromium = {
         executable = "${pkgs.lib.getBin pkgs.chromium}/bin/chromium";
         profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
-        # desktop = "${pkgs.chromium}/share/applications/chromium-browser.desktop";
+        desktop = "${pkgs.chromium}/share/applications/chromium-browser.desktop";
       };
       brave = {
         executable = "${pkgs.lib.getBin pkgs.brave}/bin/brave";
         profile = "${pkgs.firejail}/etc/firejail/brave.profile";
-        # desktop = "${pkgs.brave}/share/applications/brave-browser.desktop";
+        desktop = "${pkgs.brave}/share/applications/brave-browser.desktop";
       };
       spotify = {
         executable = "${pkgs.lib.getBin pkgs.spotify}/bin/spotify";
         profile = "${pkgs.firejail}/etc/firejail/spotify.profile";
-        # desktop = "${pkgs.spotify}/share/applications/spotify.desktop";
+        desktop = "${pkgs.spotify}/share/applications/spotify.desktop";
       };
       # postman = {
       #   executable = "${pkgs-unstable.lib.getBin pkgs-unstable.postman}/bin/postman";
