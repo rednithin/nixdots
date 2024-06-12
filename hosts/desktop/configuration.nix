@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, pkgs-unstable, home-manager, ... }:
+{ inputs, pkgs-unstable, pkgs, lib, home-manager, ... }:
 
 {
   imports =
@@ -54,9 +54,9 @@
   services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -78,8 +78,32 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  # ];
+  environment.systemPackages = [
+  (
+    let
+      packages = with pkgs; [
+        chromium
+        firefox
+        spotify
+        brave
+      ];
+    in
+    pkgs.runCommand "firejail-icons"
+      {
+        preferLocalBuild = true;
+        allowSubstitutes = false;
+        meta.priority = -1;
+      }
+      ''
+        mkdir -p "$out/share/icons"
+        ${lib.concatLines (map (pkg: ''
+          tar -C "${pkg}" -c share/icons -h --mode 0755 -f - | tar -C "$out" -xf -
+        '') packages)}
+        find "$out/" -type f -print0 | xargs -0 chmod 0444
+        find "$out/" -type d -print0 | xargs -0 chmod 0555
+      ''
+  )
+];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
