@@ -93,7 +93,10 @@
 
     wofi
     pavucontrol
+    networkmanagerapplet
     
+    mako
+    wf-recorder
     alacritty
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -171,7 +174,7 @@
 
   imports = [
     ./zsh.nix
-    ./hyprland.nix
+    ./hyprland/default.nix
     ./waybar/default.nix
   ];
 }
