@@ -79,6 +79,18 @@
     sqlitebrowser
     hplip
     libsForQt5.polonium
+
+    swww
+    waybar
+    grim
+    grimblast
+
+    libsForQt5.qtstyleplugin-kvantum
+    libsForQt5.qt5ct
+    xwayland
+    wl-clipboard
+    cliphist
+    
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
@@ -152,4 +164,10 @@
         IdentityFile /home/nithin/.ssh/github
     '';
   };
+
+  imports = [
+    ./zsh.nix
+    ./hyprland.nix
+    ./waybar.nix
+  ];
 }
