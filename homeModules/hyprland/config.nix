@@ -13,10 +13,10 @@
         "nm-applet &"
         "hyprctl setcursor Nordzy-cursors 22 &"
         "mako &"
-        "[workspace 1 silent] code &"
-        "[workspace 3 silent] alacritty &"
-        "[workspace 5 silent] firefox &"
-        "[workspace 10 silent] spotify &"
+        "hyprctl dispatch exec [workspace 1 silent] code &"
+        "hyprctl dispatch exec [workspace 3 silent] alacritty &"
+        "hyprctl dispatch exec [workspace 5 silent] firefox &"
+        "hyprctl dispatch exec [workspace 10 silent] spotify &"
       ];
 
       input = {
