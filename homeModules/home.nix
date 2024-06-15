@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, pkgs-unstable, lib, ... }:
 
 {
 
@@ -175,18 +175,44 @@
     '';
   };
 
+  programs.swaylock = {
+    enable = true;
+    settings = {
+      color = "000000";
+      font-size = 24;
+      indicator-idle-visible = false;
+      indicator-radius = 100;
+      line-color = "ffffff";
+      show-failed-attempts = true;
+    };
+  };
+
   services.swayidle = {
     enable = true;
-    systemdTarget = "sway-session.target";
-    events = [
-      { event = "lock"; command = "${pkgs.swaylock}/bin/swaylock -n -c 000000"; }
-      { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -n -c 000000"; }
-      { event = "after-resume"; command = "${pkgs.sway}/bin/swaymsg \"output * toggle\""; }
-    ];
     timeouts = [
-      { timeout = 60; command = "${pkgs.swaylock}/bin/swaylock -n -c 000000"; }
+      {
+        timeout = 60;
+        command = "${pkgs.libnotify}/bin/notify-send 'Locking in 15 seconds' -t 10000";
+      }
+      {
+        timeout = 80;
+        command = "${pkgs.swaylock}/bin/swaylock";
+      }
+      {
+        timeout = 85;
+        command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+        resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+      }
+    ];
+    events = [
+      {
+        event = "before-sleep";
+        command = "${pkgs.swaylock}/bin/swaylock";
+      }
     ];
   };
+  
+  systemd.user.services.swayidle.Install.WantedBy = lib.mkForce ["hyprland-session.target"];
 
   imports = [
     ./zsh.nix
