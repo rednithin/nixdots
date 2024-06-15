@@ -5,18 +5,18 @@
       
       # autostart
       exec-once = [
-        "swww init"
-        "swww img ~/.dotfiles/Wallpapers/wallhaven-2e3kw6.jpg"
-        "waybar"
-        "wl-paste --type text --watch cliphist store"
-        "wl-paste --type image --watch cliphist store"
-        "nm-applet"
-        "hyprctl setcursor Nordzy-cursors 22"
-        "mako"
-        "[workspace 1 silent] code"
-        "[workspace 3 silent] alacritty"
-        "[workspace 5 silent] firefox"
-        "[workspace 10 silent] spotify"
+        "swww init &"
+        "swww img ~/.dotfiles/Wallpapers/wallhaven-2e3kw6.jpg &"
+        "waybar &"
+        "wl-paste --type text --watch cliphist store &"
+        "wl-paste --type image --watch cliphist store &"
+        "nm-applet &"
+        "hyprctl setcursor Nordzy-cursors 22 &"
+        "mako &"
+        "[workspace 1 silent] code &"
+        "[workspace 3 silent] alacritty &"
+        "[workspace 5 silent] firefox &"
+        "[workspace 10 silent] spotify &"
       ];
 
       input = {
