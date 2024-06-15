@@ -176,7 +176,6 @@
 
   imports = [
     ./zsh.nix
-    ./gtk.nix
     ./hyprland/default.nix
     ./waybar/default.nix
   ];
