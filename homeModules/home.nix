@@ -191,17 +191,17 @@
     enable = true;
     timeouts = [
       {
-        timeout = 5;
+        timeout = 65;
         command = "${pkgs.libnotify}/bin/notify-send 'Locking in 15 seconds' -t 10000";
       }
       {
-        timeout = 10;
+        timeout = 70;
         command = "${pkgs.swaylock}/bin/swaylock";
       }
       {
-        timeout = 15;
-        command = "${config.wayland.windowManager.hyprland.finalPackage}/bin/hyprctl dispatch dpms off";
-        resumeCommand = "${config.wayland.windowManager.hyprland.finalPackage}/bin/hyprctl dispatch dpms on";
+        timeout = 85;
+        command = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
+        resumeCommand = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
       }
     ];
     events = [
@@ -210,9 +210,10 @@
         command = "${pkgs.swaylock}/bin/swaylock";
       }
     ];
+    systemdTarget = "hyprland-session.target";
   };
   
-  systemd.user.services.swayidle.Install.WantedBy = lib.mkForce ["hyprland-session.target"];
+  # systemd.user.services.swayidle.Install.WantedBy = lib.mkForce ["hyprland-session.target"];
 
   imports = [
     ./zsh.nix
