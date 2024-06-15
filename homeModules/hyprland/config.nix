@@ -13,10 +13,7 @@
         "nm-applet &"
         "hyprctl setcursor Nordzy-cursors 22 &"
         "mako &"
-        "hyprctl dispatch exec [workspace 1 silent] code &"
-        "hyprctl dispatch exec [workspace 3 silent] alacritty &"
-        "hyprctl dispatch exec [workspace 5 silent] firefox &"
-        "hyprctl dispatch exec [workspace 10 silent] spotify &"
+        # "~/.dotfiles/dotfiles/scripts/launch.sh"
       ];
 
       input = {
