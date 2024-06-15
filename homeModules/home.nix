@@ -175,6 +175,19 @@
     '';
   };
 
+  services.swayidle = {
+    enable = true;
+    systemdTarget = "sway-session.target";
+    events = [
+      { event = "lock"; command = "${pkgs.swaylock}/bin/swaylock -n -c 000000"; }
+      { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -n -c 000000"; }
+      { event = "after-resume"; command = "${pkgs.sway}/bin/swaymsg \"output * toggle\""; }
+    ];
+    timeouts = [
+      { timeout = 60; command = "${pkgs.swaylock}/bin/swaylock -n -c 000000"; }
+    ];
+  };
+
   imports = [
     ./zsh.nix
     ./hyprland/default.nix

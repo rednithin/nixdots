@@ -135,6 +135,7 @@
         "$mainMod SHIFT, B, exec, pkill -SIGUSR1 .waybar-wrapped"
         "$mainMod SHIFT, Q, exit,"
         "$mainMod CTRL, R, exec, hyprctl reload && pkill waybar && waybar &,"
+        "$mainMod CTRL, Q, exec, swaylock -n -c 4B0082,"
 
         # screenshot
         "$mainMod, Print, exec, grimblast --notify --cursor save area ~/Pictures/$(date +'%Y-%m-%d-At-%Ih%Mm%Ss').png"
