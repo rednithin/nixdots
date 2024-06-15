@@ -121,7 +121,7 @@
       bind = [
         "$mainMod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
 
-        "$mainMod, Return, exec, alacritty"
+        "$mainMod, Return, exec, wezterm"
         "$mainMod, Q, killactive,"
         "$mainMod, M, exit,"
         "$mainMod, E, exec, dolphin"
@@ -191,10 +191,10 @@
         ", XF86MonBrightnessUp, exec, brightnessctl set +5% "
 
         # Configuration files
-        ''$mainMod SHIFT, N, exec, alacritty -e sh -c "rb"''
-        ''$mainMod SHIFT, C, exec, alacritty -e sh -c "conf"''
-        ''$mainMod SHIFT, H, exec, alacritty -e sh -c "nvim ~/nix/home-manager/modules/wms/hyprland.nix"''
-        ''$mainMod SHIFT, W, exec, alacritty -e sh -c "nvim ~/nix/home-manager/modules/wms/waybar.nix''
+        ''$mainMod SHIFT, N, exec, wezterm -e sh -c "rb"''
+        ''$mainMod SHIFT, C, exec, wezterm -e sh -c "conf"''
+        ''$mainMod SHIFT, H, exec, wezterm -e sh -c "nvim ~/nix/home-manager/modules/wms/hyprland.nix"''
+        ''$mainMod SHIFT, W, exec, wezterm -e sh -c "nvim ~/nix/home-manager/modules/wms/waybar.nix''
         '', Print, exec, grim -g "$(slurp)" - | swappy -f -''
 
         # Waybar
