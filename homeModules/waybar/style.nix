@@ -1,7 +1,7 @@
 { ... }:
 let custom = {
     font = "JetBrainsMono Nerd Font";
-    font_size = "15px";
+    font_size = "17px";
     font_weight = "bold";
     text_color = "#cdd6f4";
     secondary_accent= "89b4fa";
@@ -45,55 +45,12 @@ in
         color: #b4befe;
     }
 
-    #tray, #pulseaudio, #network, #cpu, #memory, #disk, #clock, #battery {
+    #tray, #pulseaudio, #network, #cpu, #memory, #disk, #clock, #battery, #bluetooth, #custom-launcher {
         font-size: ${custom.font_size};
         color: ${custom.text_color};
-    }
-
-    #cpu {
-        padding-left: 15px;
-        padding-right: 9px;
-        margin-left: 7px;
-    }
-    #memory {
         padding-left: 9px;
         padding-right: 9px;
-    }
-    #disk {
-        padding-left: 9px;
-        padding-right: 15px;
-    }
-
-    #tray {
-        padding: 0 20px;
-        margin-left: 7px;
-    }
-
-    #pulseaudio {
-        padding-left: 15px;
-        padding-right: 9px;
-        margin-left: 7px;
-    }
-    #battery {
-        padding-left: 9px;
-        padding-right: 9px;
-    }
-    #network {
-        padding-left: 9px;
-        padding-right: 15px;
     }
     
-    #clock {
-        padding-left: 9px;
-        padding-right: 15px;
-    }
-
-    #custom-launcher {
-        font-size: 20px;
-        color: #b4befe;
-        font-weight: ${custom.font_weight};
-        padding-left: 10px;
-        padding-right: 15px;
-    }
   '';
 }

@@ -98,6 +98,8 @@
     mako
     wf-recorder
     alacritty
+    killall
+    pamixer
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
@@ -174,6 +176,7 @@
 
   imports = [
     ./zsh.nix
+    ./gtk.nix
     ./hyprland/default.nix
     ./waybar/default.nix
   ];

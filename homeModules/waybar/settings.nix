@@ -17,12 +17,13 @@
     ];
     modules-right= [
         "tray" 
+        "bluetooth"
         "cpu"
         "memory"
         "disk"
         "pulseaudio" 
         "battery"
-        "network"
+        "networkwayba"
     ];
     clock= {
         calendar = {
@@ -39,28 +40,30 @@
         format = "{icon}";
         on-click= "activate";
         format-icons= {
-            "1"= "󰈹";
-            "2"= "";
-            "3"= "󰘙";
-            "4"= "󰙯";
-            "5"= "";
-            "6"= "";
-            urgent= "";
-            default = "";
+            "1"= "1";
+            "2"= "2";
+            "3"= "3";
+            "4"= "4";
+            "5"= "5";
+            "6"= "6";
+            "7"= "7";
+            "8"= "8";
+            "9"= "9";
+            "0"= "0";
+            # urgent= "";
+            # default = "";
             sort-by-number= true;
-        };
-        persistent-workspaces = {
-            "1"= [];
-            "2"= [];
-            "3"= [];
-            "4"= [];
-            "5"= [];
         };
     };
     memory= {
         format= "󰟜 {}%";
         format-alt= "󰟜 {used} GiB"; # 
         interval= 2;
+    };
+    bluetooth= {
+        format-on= "";
+        format-off= "!";
+        tooltip-format= "{status}";
     };
     cpu= {
         format= "  {usage}%";

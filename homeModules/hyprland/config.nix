@@ -28,9 +28,9 @@
       general = {
         "$mainMod" = "SUPER";
         layout = "dwindle";
-        gaps_in = 0;
-        gaps_out = 0;
-        border_size = 2;
+        gaps_in = 5;
+        gaps_out = 10;
+        border_size = 1;
         "col.active_border" = "rgb(cba6f7) rgb(94e2d5) 45deg";
         "col.inactive_border" = "0x00000000";
         border_part_of_window = false;
@@ -64,7 +64,7 @@
       };
 
       decoration = {
-        rounding = 0;
+        rounding = 5;
         # active_opacity = 0.90;
         # inactive_opacity = 0.90;
         # fullscreen_opacity = 1.0;
@@ -125,27 +125,16 @@
         "$mainMod, F1, exec, show-keybinds"
 
         # keybindings
-        "$mainMod, Return, exec, kitty"
-        "ALT, Return, exec, kitty --title float_kitty"
-        "$mainMod SHIFT, Return, exec, kitty --start-as=fullscreen -o 'font_size=16'"
-        "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1 silent] floorp'"
+        "$mainMod, Return, exec, alacritty"
         "$mainMod, Q, killactive,"
         "$mainMod, F, fullscreen, 0"
-        "$mainMod SHIFT, F, fullscreen, 1"
         "$mainMod, Space, togglefloating,"
-        "$mainMod, D, exec, pkill wofi || wofi --show drun"
-        "$mainMod SHIFT, D, exec, hyprctl dispatch exec '[workspace 4 silent] discord'"
-        "$mainMod SHIFT, S, exec, hyprctl dispatch exec '[workspace 5 silent] SoundWireServer'"
+        "$mainMod, P, exec, pkill wofi || wofi --show drun"
         "$mainMod, Escape, exec, swaylock"
-        "$mainMod SHIFT, Escape, exec, shutdown-script"
-        "$mainMod, P, pseudo,"
-        "$mainMod, J, togglesplit,"
-        "$mainMod, E, exec, nemo"
+        "$mainMod, T, togglesplit,"
         "$mainMod SHIFT, B, exec, pkill -SIGUSR1 .waybar-wrapped"
-        "$mainMod, C ,exec, hyprpicker -a"
-        "$mainMod, G,exec, $HOME/.local/bin/toggle_layout"
-        "$mainMod, W,exec, pkill wofi || wallpaper-picker"
-        "$mainMod SHIFT, W, exec, vm-start"
+        "$mainMod SHIFT, Q, exit,"
+        "$mainMod CTRL, R, exec, hyprctl reload && pkill waybar && waybar &,"
 
         # screenshot
         "$mainMod, Print, exec, grimblast --notify --cursor save area ~/Pictures/$(date +'%Y-%m-%d-At-%Ih%Mm%Ss').png"
@@ -281,7 +270,10 @@
     };
 
     extraConfig = "
-      monitor=,preferred,auto,auto
+      # monitor=,preferred,auto,auto
+
+      monitor=DVI-D-1, 2450x1440, 1920x0, 1
+      monitor=HDMI-A-1, 1920x1080, 0x0, 1
 
       xwayland {
         force_zero_scaling = true
