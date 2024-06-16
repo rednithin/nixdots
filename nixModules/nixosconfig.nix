@@ -2,7 +2,7 @@
 
 {
 
-  users.users.nithin.shell = pkgs.fish;
+  users.users.nithin.shell = pkgs.zsh;
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
@@ -27,6 +27,7 @@
 
 
   programs.fish.enable = true; 
+  programs.zsh.enable = true; 
   
   # Enable OpenGL
   hardware.opengl = {

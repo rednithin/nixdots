@@ -12,7 +12,7 @@
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" "sudo" ];
-      theme = "agnoster"; # blinks is also really nice
+      theme = "af-magic"; # blinks is also really nice
     };
   };
 }
