@@ -1,24 +1,66 @@
 { ... }: 
 {
   wayland.windowManager.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+
     settings = {
+
+      env = [
+        "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+        "QT_SCALE_FACTOR,1"
+        "QT_QPA_PLATFORM,wayland"
+        "QT_QPA_PLATFORMTHEME,qt6ct"
+        "QT_STYLE_OVERRIDE,qt6ct"
+        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+
+        "XDG_CURRENT_DESKTOP,Hyprland"
+        "XDG_SESSION_DESKTOP,Hyprland"
+        "XDG_SESSION_TYPE,wayland"
+        "XDG_MENU_PREFIX,plasma-"
+
+        "CLUTTER_BACKEND,wayland"
+        "GDK_SCALE,1"
+        "GDK_BACKEND,wayland"
+        "LIBSEAT_BACKEND,logind"
+        "LIBVA_DRIVER_NAME,radeonsi"
+        "LIBVA_DRIVER_NAME,nvidia"
+        # "GBM_BACKEND,nvidia-drm" # Firefox crashes when enabled
+        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        "NVD_BACKEND,direct"
+        "ELECTRON_OZONE_PLATFORM_HINT,auto"
+        "NIXOS_OZONE_WL,1"
+        "MOZ_ENABLE_WAYLAND,1"
+        "SDL_VIDEODRIVER,wayland"
+      ];
+
+      monitor= [
+        "DVI-D-1, 2450x1440, 1920x0, 1"
+        "HDMI-A-1, 1920x1080, 0x0, 1"
+        "Unknown-1, disable"
+      ];
       
       # autostart
       exec-once = [
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        "dbus-update-activation-environment --systemd --all"
+        "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        "/usr/lib/polkit-kde-authentication-agent-1"
+
+        
+        "waybar &"
         "swww init &"
         "swww img ~/.dotfiles/Wallpapers/wallhaven-2e3kw6.jpg &"
-        "waybar &"
         "wl-paste --type text --watch cliphist store &"
         "wl-paste --type image --watch cliphist store &"
-        "nm-applet &"
-        "hyprctl setcursor Nordzy-cursors 22 &"
+        # "nm-applet &"
+        # "hyprctl setcursor Nordzy-cursors 22 &"
         "mako &"
         # "~/.dotfiles/dotfiles/scripts/launch.sh"
       ];
 
       input = {
         kb_layout = "us";
-        numlock_by_default = true;
         follow_mouse = 1;
         sensitivity = 0;
         touchpad = {
@@ -48,49 +90,22 @@
         focus_on_activate = true;
       };
 
+      xwayland = {
+        force_zero_scaling = "true";
+      };
+
       dwindle = {
         no_gaps_when_only = true;
-        force_split = 0;
-        special_scale_factor = 1.0;
-        split_width_multiplier = 1.0;
-        use_active_for_splits = true;
         pseudotile = "yes";
         preserve_split = "yes";
       };
 
       master = {
         new_is_master = true;
-        special_scale_factor = 1;
-        no_gaps_when_only = false;
       };
 
       decoration = {
         rounding = 5;
-        # active_opacity = 0.90;
-        # inactive_opacity = 0.90;
-        # fullscreen_opacity = 1.0;
-
-        blur = {
-          enabled = true;
-          size = 1;
-          passes = 1;
-          # size = 4;
-          # passes = 2;
-          brightness = 1;
-          contrast = 1.400;
-          ignore_opacity = true;
-          noise = 0;
-          new_optimizations = true;
-          xray = true;
-        };
-
-        drop_shadow = true;
-
-        shadow_ignore_window = true;
-        shadow_offset = "0 2";
-        shadow_range = 20;
-        shadow_render_power = 3;
-        "col.shadow" = "rgba(00000055)";
       };
 
       animations = {
@@ -268,18 +283,6 @@
         "float,title:^(Confirm to replace files)$"
         "float,title:^(File Operation Progress)$"
       ];
-
     };
-
-    extraConfig = "
-      # monitor=,preferred,auto,auto
-
-      monitor=DVI-D-1, 2450x1440, 1920x0, 1
-      monitor=HDMI-A-1, 1920x1080, 0x0, 1
-
-      xwayland {
-        force_zero_scaling = true
-      }
-    ";
   };
 }
