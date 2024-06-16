@@ -199,6 +199,11 @@
 
   programs.hyprland = {
     enable = true;
+
+    xwayland = {
+      enable = true;
+    };
+
     # enableNvidiaPatches = true;
     # xwayland.enable = true;
   };
