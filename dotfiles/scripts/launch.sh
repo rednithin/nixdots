@@ -1,11 +1,11 @@
 #/bin/bash
 
-sleep 5
+sleep 3
 
 hyprctl dispatch exec [workspace 1 silent] code
-sleep 1
+sleep 2
 hyprctl dispatch exec [workspace 3 silent] alacritty
-sleep 1
+sleep 2
 hyprctl dispatch exec [workspace 5 silent] firefox
-sleep 1
+sleep 2
 hyprctl dispatch exec [workspace 10 silent] spotify

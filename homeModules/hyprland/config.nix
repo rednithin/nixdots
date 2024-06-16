@@ -56,7 +56,7 @@
         # "nm-applet &"
         # "hyprctl setcursor Nordzy-cursors 22 &"
         "mako &"
-        # "~/.dotfiles/dotfiles/scripts/launch.sh"
+        "~/.dotfiles/dotfiles/scripts/launch.sh"
       ];
 
       input = {
