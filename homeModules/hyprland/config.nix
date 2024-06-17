@@ -50,7 +50,7 @@
         
         "waybar &"
         "swww init &"
-        "swww img ~/.dotfiles/Wallpapers/wallhaven-2e3kw6.jpg &"
+        "sleep 2 && swww img ~/.dotfiles/Wallpapers/wallhaven-2e3kw6.jpg &"
         "wl-paste --type text --watch cliphist store &"
         "wl-paste --type image --watch cliphist store &"
         # "nm-applet &"
@@ -64,7 +64,7 @@
         follow_mouse = 1;
         sensitivity = 0;
         touchpad = {
-          natural_scroll = true;
+          natural_scroll = false;
         };
       };
 
