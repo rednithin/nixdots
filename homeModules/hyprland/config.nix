@@ -202,6 +202,11 @@
         "$mainMod ALT, up, moveactive, 0 -80"
         "$mainMod ALT, down, moveactive, 0 80"
 
+
+        # move workspace
+        "$mainMod CTRL, left, movecurrentworkspacetomonitor, l"
+        "$mainMod CTRL, right, movecurrentworkspacetomonitor, r"
+
         # media and volume controls
         ",XF86AudioRaiseVolume,exec, pamixer -i 2"
         ",XF86AudioLowerVolume,exec, pamixer -d 2"
