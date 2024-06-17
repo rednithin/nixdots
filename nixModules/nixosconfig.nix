@@ -8,6 +8,7 @@
   hardware.bluetooth.powerOnBoot = true;
 
   services.xserver.windowManager.awesome.enable = true;
+  services.tailscale.enable = true;
   
 
   
