@@ -145,24 +145,24 @@
 
 
   # Enable sound with pipewire.
-  sound = {
-    enable = true;
-    enableOSSEmulation = true;
-    extraConfig = ''
-      pcm.ladspa {
-        type ladspa
-        slave.pcm "plughw:0,0";
-        path "${pkgs.ladspaPlugins}/lib/ladspa";
-        plugins [{
-          label dysonCompress
-          input {
-            # peak limit, release time, fast ratio, ratio
-            controls [1.0 0.1 0.1 0.9]
-          }
-        }]
-      }
-    '';
-  };
+  # sound = {
+  #   enable = true;
+  #   enableOSSEmulation = true;
+  #   extraConfig = ''
+  #     pcm.ladspa {
+  #       type ladspa
+  #       slave.pcm "plughw:0,0";
+  #       path "${pkgs.ladspaPlugins}/lib/ladspa";
+  #       plugins [{
+  #         label dysonCompress
+  #         input {
+  #           # peak limit, release time, fast ratio, ratio
+  #           controls [1.0 0.1 0.1 0.9]
+  #         }
+  #       }]
+  #     }
+  #   '';
+  # };
 
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
