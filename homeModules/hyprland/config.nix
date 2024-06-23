@@ -208,9 +208,9 @@
         "$mainMod CTRL, right, movecurrentworkspacetomonitor, r"
 
         # media and volume controls
-        ",XF86AudioRaiseVolume,exec, pactl set-sink-volume 0 +5%"
-        ",XF86AudioLowerVolume,exec, pactl set-sink-volume 0 -5%"
-        ",XF86AudioMute,exec, pactl set-sink-mute 0 toggle"
+        ",XF86AudioRaiseVolume,exec, ~/.dotfiles/dotfiles/scripts/volume.sh up"
+        ",XF86AudioLowerVolume,exec, ~/.dotfiles/dotfiles/scripts/volume.sh down"
+        ",XF86AudioMute,exec, ~/.dotfiles/dotfiles/scripts/volume.sh toggle"
         ",XF86AudioPlay,exec, playerctl play-pause"
         ",XF86AudioNext,exec, playerctl next"
         ",XF86AudioPrev,exec, playerctl previous"
