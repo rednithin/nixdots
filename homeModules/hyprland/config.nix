@@ -210,7 +210,7 @@
         # media and volume controls
         ",XF86AudioRaiseVolume,exec, ~/.dotfiles/dotfiles/scripts/volume.sh up"
         ",XF86AudioLowerVolume,exec, ~/.dotfiles/dotfiles/scripts/volume.sh down"
-        ",XF86AudioMute,exec, ~/.dotfiles/dotfiles/scripts/volume.sh toggle"
+        ",XF86AudioMute,exec, ~/.dotfiles/dotfiles/scripts/volume.sh mute"
         ",XF86AudioPlay,exec, playerctl play-pause"
         ",XF86AudioNext,exec, playerctl next"
         ",XF86AudioPrev,exec, playerctl previous"
