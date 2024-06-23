@@ -227,8 +227,12 @@
           };
         };
         listener = [
+           {
+            timeout = 65;
+            command = "${pkgs.libnotify}/bin/notify-send 'Locking in 15 seconds' -t 10000";
+          }
           {
-            timeout = 60;
+            timeout = 80;
             on-timeout = "hyprlock";
           }
           {
