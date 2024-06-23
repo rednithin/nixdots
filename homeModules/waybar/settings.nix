@@ -64,6 +64,7 @@
         format-on= "";
         format-off= "!";
         tooltip-format= "{status}";
+        on-click= "bluedevil-wizard";
     };
     cpu= {
         format= "  {usage}%";
@@ -93,7 +94,7 @@
             default= [" "];
         };
         scroll-step= 5;
-        on-click= "pamixer -t";
+        on-click= "pavucontrol";
     };
     battery = {
         format = "{icon} {capacity}%";
