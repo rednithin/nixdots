@@ -188,32 +188,61 @@
     };
   };
 
-  services.swayidle = {
-    enable = true;
-    timeouts = [
-      {
-        timeout = 65;
-        command = "${pkgs.libnotify}/bin/notify-send 'Locking in 15 seconds' -t 10000";
-      }
-      {
-        timeout = 70;
-        command = "${pkgs.swaylock}/bin/swaylock";
-      }
-      {
-        timeout = 85;
-        command = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
-        resumeCommand = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
-      }
-    ];
-    events = [
-      {
-        event = "before-sleep";
-        command = "${pkgs.swaylock}/bin/swaylock";
-      }
-    ];
-    systemdTarget = "hyprland-session.target";
-  };
+  # services.swayidle = {
+  #   enable = true;
+  #   timeouts = [
+  #     {
+  #       timeout = 65;
+  #       command = "${pkgs.libnotify}/bin/notify-send 'Locking in 15 seconds' -t 10000";
+  #     }
+  #     {
+  #       timeout = 70;
+  #       command = "${pkgs.swaylock}/bin/swaylock";
+  #     }
+  #     {
+  #       timeout = 85;
+  #       command = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
+  #       resumeCommand = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
+  #     }
+  #   ];
+  #   events = [
+  #     {
+  #       event = "before-sleep";
+  #       command = "${pkgs.swaylock}/bin/swaylock";
+  #     }
+  #   ];
+  #   systemdTarget = "hyprland-session.target";
+  # };
   
+  services = {
+    hypridle = {
+      settings = {
+        general = {
+          after_sleep_cmd = "hyprctl dispatch dpms on";
+          ignore_dbus_inhibit = false;
+          lock_cmd = "hyprlock";
+          starship = {
+            enable = true;
+            package = pkgs.starship;
+          };
+        };
+        listener = [
+          {
+            timeout = 60;
+            on-timeout = "hyprlock";
+          }
+          {
+            timeout = 120;
+            on-timeout = "hyprctl dispatch dpms off";
+            on-resume = "hyprctl dispatch dpms on";
+          }
+        ];
+      };
+    };
+  };
+
+
+
   # systemd.user.services.swayidle.Install.WantedBy = lib.mkForce ["hyprland-session.target"];
 
   imports = [
