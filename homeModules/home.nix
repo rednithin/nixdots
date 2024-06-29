@@ -25,6 +25,7 @@
     # # "Hello, world!" when run.
     # firefox
     # chromium
+    fastfetch
     hello
     zip
     unzip
