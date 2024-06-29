@@ -56,7 +56,7 @@
         # "nm-applet &"
         # "hyprctl setcursor Nordzy-cursors 22 &"
         "mako &"
-        "hyprctl setcursor Nordzy-cursors 30 &"
+        "hyprctl setcursor Nordzy-cursors 26 &"
         "~/.dotfiles/dotfiles/scripts/launch.sh"
       ];
 

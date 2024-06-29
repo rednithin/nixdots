@@ -218,19 +218,19 @@
 
   gtk = {
     enable = true;
-    # font = { name = "sans-serif"; };
-    # theme = {
-    #   name = "Adwaita";
-    #   package = pkgs.gnome.gnome-themes-extra;
-    # };
-    # iconTheme = {
-    #   package = pkgs.gnome.adwaita-icon-theme;
-    #   name = "Adwaita";
-    # };
+    font = { name = "sans-serif"; };
+    theme = {
+      name = "Breeze-Dark";
+      package = pkgs.kdePackages.breeze-gtk;
+    };
+    iconTheme = {
+      package = pkgs.kdePackages.breeze-gtk;
+      name = "Breeze-Dark";
+    };
     cursorTheme = {
       package = pkgs.nordzy-cursor-theme;
       name = "Nordzy-cursors";
-      size = 30;
+      size = 26;
     };
   };
 
@@ -238,7 +238,7 @@
     package = pkgs.nordzy-cursor-theme;
     name = "Nordzy-cursors";
     gtk.enable = true;
-    size = 30;
+    size = 26;
   };
   
   services = {
