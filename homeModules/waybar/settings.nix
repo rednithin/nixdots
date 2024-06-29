@@ -16,6 +16,7 @@
         "clock"
     ];
     modules-right= [
+        "custom/batteryrate"
         "tray" 
         "bluetooth"
         "cpu"
@@ -115,6 +116,11 @@
         on-click= "pkill wofi || wofi --show drun";
         on-click-right= "pkill wofi || wallpaper-picker"; 
         tooltip= "false";
+    };
+    "custom/batteryrate"= {
+      type= "custom/script";
+      exec= "~/.dotfiles/dotfiles/scripts/batteryrate.sh";
+      interval= 5;
     };
   };
 }

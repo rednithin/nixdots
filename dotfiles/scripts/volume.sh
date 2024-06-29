@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Function to get currently used sink
 get_current_sink() {
     CURRENT_SINK=$(pactl info | grep 'Default Sink' | awk '{print $3}')
