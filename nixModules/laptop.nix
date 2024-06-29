@@ -18,6 +18,9 @@
     # };
 
     services.power-profiles-daemon.enable = false;
+    services.upower = {
+        enable = true;
+    };
     services.tlp = {
         enable = true;
         # settings = {
