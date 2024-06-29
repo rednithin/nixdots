@@ -215,6 +215,31 @@
   #   ];
   #   systemdTarget = "hyprland-session.target";
   # };
+
+  gtk = {
+    enable = true;
+    # font = { name = "sans-serif"; };
+    # theme = {
+    #   name = "Adwaita";
+    #   package = pkgs.gnome.gnome-themes-extra;
+    # };
+    # iconTheme = {
+    #   package = pkgs.gnome.adwaita-icon-theme;
+    #   name = "Adwaita";
+    # };
+    cursorTheme = {
+      package = pkgs.nordzy-cursor-theme;
+      name = "Nordzy-cursors";
+      size = 30;
+    };
+  };
+
+  home.pointerCursor = {
+    package = pkgs.nordzy-cursor-theme;
+    name = "Nordzy-cursors";
+    gtk.enable = true;
+    size = 30;
+  };
   
   services = {
     hypridle = {
