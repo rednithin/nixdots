@@ -57,6 +57,7 @@
         # "hyprctl setcursor Nordzy-cursors 22 &"
         "mako &"
         "hyprctl setcursor Nordzy-cursors 26 &"
+        "wlr-randr --output eDP-1 --mode=2880x1800@60 &"
         "~/.dotfiles/dotfiles/scripts/launch.sh"
       ];
 
