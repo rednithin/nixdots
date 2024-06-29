@@ -38,11 +38,12 @@
         };
     };
 
-    # boot.postBootCommands = ''
-    #     #!/bin/bash
+    boot.postBootCommands = ''
+        #!/bin/bash
         
-    #     for f in /proc/irq/*/smp_affinity_list; do echo 20-21 > $f; done
-    # '';
+        # for f in /proc/irq/*/smp_affinity_list; do echo 20-21 > $f; done
+        wlr-randr --output eDP-1 --mode=2880x1800@60
+    '';
 
     # powerManagement.powertop.enable = true;
 }
