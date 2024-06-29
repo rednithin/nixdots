@@ -102,10 +102,6 @@
         preserve_split = "yes";
       };
 
-      master = {
-        new_is_master = true;
-      };
-
       decoration = {
         rounding = 5;
       };
