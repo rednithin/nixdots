@@ -10,7 +10,7 @@
   '';
   wallpaper-randomizer = pkgs.writeShellScriptBin "wallpaper-randomizer" ''
     while true; do
-    	sleep 300
+    	sleep 15
       ${set-random-wallpaper}/bin/set-random-wallpaper
     done
   '';
