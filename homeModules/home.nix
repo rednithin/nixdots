@@ -223,7 +223,7 @@
 
   gtk = {
     enable = true;
-    font = { name = "sans-serif"; };
+    font = { name = "NotoSans Nerd Font"; };
     theme = {
       name = "Breeze-Dark";
       package = pkgs.kdePackages.breeze-gtk;
