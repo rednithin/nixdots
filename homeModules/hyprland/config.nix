@@ -49,8 +49,6 @@
 
         
         "waybar &"
-        "swww init &"
-        "sleep 2 && swww img ~/.dotfiles/Wallpapers/wallhaven-2e3kw6.jpg &"
         "wl-paste --type text --watch cliphist store &"
         "wl-paste --type image --watch cliphist store &"
         # "nm-applet &"
@@ -58,7 +56,6 @@
         "mako &"
         "hyprctl setcursor Nordzy-cursors 26 &"
         "wlr-randr --output eDP-1 --mode=2880x1800@60 &"
-        "~/.dotfiles/dotfiles/scripts/randomwallpaper.sh &"
         "~/.dotfiles/dotfiles/scripts/launch.sh"
       ];
 
