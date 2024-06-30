@@ -2,7 +2,7 @@
 
 {
 
-  boot.kernelPackages = pkgs.linuxPackages_6_9;
+  boot.kernelPackages = pkgs.linuxPackages_6_8;
   
   fileSystems."/home/nithin/HDD" = { 
     device = "/dev/disk/by-uuid/9f66e623-f475-40ad-8a7c-97518b4f0656";
