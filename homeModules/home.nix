@@ -114,6 +114,7 @@
     kdePackages.breeze-gtk
     kdePackages.breeze-icons
     kdePackages.qt6ct
+    kdePackages.qtstyleplugin-kvantum
     # cinnamon.nemo
     # cinnamon.nemo-with-extensions
     # gnome.nautilus
@@ -296,4 +297,19 @@
     ./qt.nix
     ./swww.nix
   ];
+
+  # xdg.portal = {
+  #   enable = true;
+  #   extraPortals = [
+  #     pkgs.xdg-desktop-portal-kde
+  #     pkgs.xdg-desktop-portal
+  #   ];
+  #   configPackages = [
+  #     pkgs.xdg-desktop-portal-kde
+  #     pkgs.xdg-desktop-portal-hyprland
+  #     pkgs.xdg-desktop-portal
+  #   ];
+  # };
+
+ 
 }
