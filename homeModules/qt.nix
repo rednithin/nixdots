@@ -1,8 +1,10 @@
-{
+{ pkgs, ...}: {
   qt = {
     enable = true;
+    # style.package = pkgs.kdePackages.breeze;
+    # style.name = "breeze-dark";
+    style.name = "breeze-dark";
     platformTheme.name = "qtct";
-    style.name = "kvantum";
   };
 
   # xdg.configFile = {

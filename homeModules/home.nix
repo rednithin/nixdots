@@ -79,15 +79,12 @@
     sqlite
     sqlitebrowser
     hplip
-    libsForQt5.polonium
 
     swww
     waybar
     grim
     grimblast
 
-    libsForQt5.qtstyleplugin-kvantum
-    libsForQt5.qt5ct
     xwayland
     wl-clipboard
     cliphist
@@ -110,6 +107,16 @@
     kdePackages.bluedevil
     zed-editor
     kdePackages.dolphin
+    kdePackages.okular
+    kdePackages.gwenview
+    kdePackages.qtwayland
+    kdePackages.breeze
+    kdePackages.breeze-gtk
+    kdePackages.breeze-icons
+    kdePackages.qt6ct
+    # cinnamon.nemo
+    # cinnamon.nemo-with-extensions
+    # gnome.nautilus
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
@@ -230,8 +237,8 @@
       package = pkgs.kdePackages.breeze-gtk;
     };
     iconTheme = {
-      package = pkgs.kdePackages.breeze-gtk;
-      name = "Breeze-Dark";
+      package = pkgs.kdePackages.breeze-icons;
+      name = "Breeze Dark";
     };
     cursorTheme = {
       package = pkgs.nordzy-cursor-theme;
