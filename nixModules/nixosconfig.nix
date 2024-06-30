@@ -221,4 +221,23 @@
   };
 
   services.gnome.gnome-keyring.enable = true;
+
+
+  # systemd = {
+  #   services.randomwallpapersvc = {
+  #     script = ''
+  #       ${pkgs.zsh}/bin/zsh /home/nithin/.dotfiles/dotfiles/scripts/randomwallpaper.sh
+  #     ''; 
+  #     description = "Random Wallpaper";
+  #     serviceConfig = {
+  #       Type = "oneshot";
+  #       User = "nithin";
+  #     };
+  #   };
+
+  #   timers.randomwallpapersvc = {
+  #     wantedBy = [ "timers.target" ];
+  #     timerConfig.OnCalendar = "minutely";
+  #   };
+  # };
 }
