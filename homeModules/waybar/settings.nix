@@ -13,7 +13,6 @@
         "hyprland/workspaces"
     ];
     modules-center= [
-        "clock"
     ];
     modules-right= [
         "custom/batteryrate"
@@ -25,15 +24,16 @@
         "pulseaudio" 
         "battery"
         "networkwayba"
+        "clock"
     ];
     clock= {
         calendar = {
           format = { today = "<span color='#b4befe'><b><u>{}</u></b></span>"; };
         };
-        format = " {:%H:%M}";
+        #  
+        format = "{:%d/%m/%Y %H:%M:%S}";
         tooltip= "true";
         tooltip-format= "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-        format-alt= " {:%d/%m}";
     };
     "hyprland/workspaces"= {
         active-only= false;

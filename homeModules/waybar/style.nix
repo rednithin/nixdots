@@ -30,8 +30,6 @@ in
 
     #workspaces {
         font-size: 18px;
-        padding-left: 15px;
-        
     }
     #workspaces button {
         color: ${custom.text_color};
@@ -45,7 +43,7 @@ in
         color: #b4befe;
     }
 
-    #tray, #pulseaudio, #network, #cpu, #memory, #disk, #clock, #battery, #bluetooth, #custom-launcher {
+    #tray, #pulseaudio, #network, #cpu, #memory, #disk, #clock, #battery, #bluetooth, #custom-launcher, #workspaces {
         font-size: ${custom.font_size};
         color: ${custom.text_color};
         padding-left: 9px;
