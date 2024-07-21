@@ -1,6 +1,6 @@
 { pkgs, ... }: 
 {
-    boot.kernelPackages = pkgs.linuxPackages_6_9;
+    boot.kernelPackages = pkgs.linuxPackages_6_10;
 
     services.thermald.enable = true;
     powerManagement.enable = true;
