@@ -9,7 +9,20 @@
 
   services.xserver.windowManager.awesome.enable = true;
   services.tailscale.enable = true;
-  
+  services.flatpak.enable = true;
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs-unstable; [
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
+    stdenv.cc.cc
+    zlib
+    fuse3
+    icu
+    nss
+    openssl
+    curl
+    expat
+  ];
 
   
   environment.sessionVariables = {

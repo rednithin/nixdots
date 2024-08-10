@@ -13,9 +13,12 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    nix-ld.url = "github:Mic92/nix-ld";
+    # this line assume that you also have nixpkgs as an input
+    nix-ld.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
-  outputs = { self, nixpkgs-stable, nixpkgs-unstable, home-manager-stable, home-manager-unstable, ... }@inputs:
+  outputs = { self, nixpkgs-stable, nixpkgs-unstable, home-manager-stable, home-manager-unstable, nix-ld, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs-stable = import nixpkgs-stable{ inherit system; config.allowUnfree = true; };
@@ -30,6 +33,7 @@
         in nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs; inherit pkgs; inherit nixpkgs; inherit pkgs-unstable; inherit home-manager;};
           modules = [ 
+            nix-ld.nixosModules.nix-ld
             ./hosts/desktop/configuration.nix
             home-manager.nixosModules.default
           ];
@@ -41,6 +45,7 @@
         in nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs; inherit pkgs; inherit nixpkgs; inherit pkgs-unstable; inherit home-manager;};
           modules = [ 
+            nix-ld.nixosModules.nix-ld
             ./hosts/laptop/configuration.nix
             home-manager.nixosModules.default
           ];

@@ -2,7 +2,7 @@
 
 {
 
-  boot.kernelPackages = pkgs.linuxPackages_6_8;
+  boot.kernelPackages = pkgs.linuxPackages_6_9;
   
   fileSystems."/home/nithin/HDD" = { 
     device = "/dev/disk/by-uuid/9f66e623-f475-40ad-8a7c-97518b4f0656";
@@ -37,8 +37,10 @@
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
   };
   
+  boot.kernelParams = [ "module_blacklist=amdgpu" ];
+  hardware.nvidia.forceFullCompositionPipeline = true;
 
 }

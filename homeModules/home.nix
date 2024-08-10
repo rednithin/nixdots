@@ -20,7 +20,11 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = (with pkgs; [
+  home.packages = let 
+    # zed-editor = pkgs-unstable.zed-editor.overrideAttrs ({
+    #   version = "0.147.2";
+    # });
+  in (with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # firefox
@@ -106,6 +110,10 @@
     pulseaudio
     kdePackages.bluedevil
     zed-editor
+    bruno
+    beekeeper-studio
+    turso-cli
+    sqld
     kdePackages.dolphin
     kdePackages.okular
     kdePackages.gwenview
