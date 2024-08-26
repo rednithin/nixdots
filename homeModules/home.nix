@@ -24,11 +24,20 @@
     # zed-editor = pkgs-unstable.zed-editor.overrideAttrs ({
     #   version = "0.147.2";
     # });
+    zsh-fhs = pkgs.buildFHSUserEnv {
+    name = "zshfhs";
+    targetPkgs = pkgs:
+      with pkgs; [
+        flatpak libxkbcommon wayland xkeyboard_config vulkan-loader
+      ];
+    runScript = "zsh";
+  };
   in (with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # firefox
     # chromium
+    zsh-fhs
     fastfetch
     hello
     zip
@@ -123,6 +132,7 @@
     kdePackages.breeze-icons
     kdePackages.qt6ct
     kdePackages.qtstyleplugin-kvantum
+    pm2
     # cinnamon.nemo
     # cinnamon.nemo-with-extensions
     # gnome.nautilus
