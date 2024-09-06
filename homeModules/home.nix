@@ -112,17 +112,17 @@
   programs.home-manager.enable = true;
 
   imports = [
-  ./awesome.nix
-  ./binaries.nix
-  ./cursor.nix
-  ./flameshot.nix
-  ./git.nix
-  ./gtk.nix
-  ./hyprland/default.nix
-  ./kde.nix
-  ./lockscreen.nix
-  ./swww.nix
-  ./waybar/default.nix
-  ./zsh.nix
+    ./awesome.nix
+    ./binaries.nix
+    ./cursor.nix
+    ./flameshot.nix
+    ./git.nix
+    ./gtk.nix
+    ./hyprland/default.nix
+    ./kde.nix
+    ./lockscreen.nix
+    ./swww.nix
+    ./waybar/default.nix
+    ./zsh.nix
   ];
 }
