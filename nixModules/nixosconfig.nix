@@ -14,7 +14,7 @@
 
   services.xserver.windowManager.awesome.enable = true;
   services.tailscale.enable = true;
-  services.flatpak.enable = false;
+  services.flatpak.enable = true;
   programs.nix-ld.enable = false;
   programs.nix-ld.package = pkgs-unstable.nix-ld-rs;
 #   hardware.nvidia-container-toolkit.enable = true;

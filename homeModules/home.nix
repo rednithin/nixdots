@@ -20,142 +20,145 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = let
-    # zed-editor = pkgs-unstable.zed-editor.overrideAttrs ({
-    #   version = "0.147.2";
-    # });
-    zsh-fhs = pkgs.buildFHSUserEnv {
-    name = "zshfhs";
-    targetPkgs = pkgs:
-      with pkgs; [
-        flatpak libxkbcommon wayland xkeyboard_config vulkan-loader 
-    ];
-    runScript = "zsh";
-  };
-  in (with pkgs; [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # firefox
-    # chromium
-    zsh-fhs
-    fastfetch
-    hello
-    zip
-    unzip
-    htop
-    neofetch
-    screenfetch
-    wget
-    curl
-    # vscode
-    git
-    kate
-    lapce
-    nil
-    direnv
-    ripgrep
-    nodejs_20
-    nodePackages.pnpm
-    yarn-berry
-    # floorp
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-    nerdfonts
-    sshpass
-    bun
-    nitrogen
-    wezterm
-    bat
-    zellij
-    eza
-    fd
-    starship
-    zoxide
-    hyperfine
-    xorg.xprop
-    xautolock
-    # (flameshot.overrideAttrs {enableWlrSupport = true;})
-    # davinci-resolve-studio
-    libnotify
-    i3lock
-    insomnia
-    gparted
-    isoimagewriter
-    brightnessctl
-    blanket
-    iperf
-    mongodb-compass
-    mongodb-tools
-    sqlite
-    sqlitebrowser
-    hplip
-    distrobox
+  home.packages =
+    let
+      # zed-editor = pkgs-unstable.zed-editor.overrideAttrs ({
+      #   version = "0.147.2";
+      # });
+      zsh-fhs = pkgs.buildFHSUserEnv {
+        name = "zshfhs";
+        targetPkgs = pkgs:
+          with pkgs; [
 
-    swww
-    waybar
-    grim
-    grimblast
+          ];
+        runScript = "zsh";
+      };
+    in
+    (with pkgs; [
+      # # Adds the 'hello' command to your environment. It prints a friendly
+      # # "Hello, world!" when run.
+      # firefox
+      # chromium
+      zsh-fhs
+      fastfetch
+      hello
+      zip
+      unzip
+      htop
+      neofetch
+      screenfetch
+      wget
+      curl
+      # vscode
+      git
+      kate
+      lapce
+      nil
+      nixd
+      direnv
+      ripgrep
+      nodejs_20
+      nodePackages.pnpm
+      yarn-berry
+      # floorp
+      # # It is sometimes useful to fine-tune packages, for example, by applying
+      # # overrides. You can do that directly here, just don't forget the
+      # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+      # # fonts?
+      # (nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+      nerdfonts
+      sshpass
+      bun
+      nitrogen
+      wezterm
+      bat
+      zellij
+      eza
+      fd
+      starship
+      zoxide
+      hyperfine
+      xorg.xprop
+      xautolock
+      # (flameshot.overrideAttrs {enableWlrSupport = true;})
+      # davinci-resolve-studio
+      libnotify
+      i3lock
+      insomnia
+      gparted
+      isoimagewriter
+      brightnessctl
+      blanket
+      iperf
+      mongodb-compass
+      mongodb-tools
+      sqlite
+      sqlitebrowser
+      hplip
+      distrobox
 
-    xwayland
-    wl-clipboard
-    cliphist
+      swww
+      waybar
+      grim
+      grimblast
 
-    wofi
-    pavucontrol
-    networkmanagerapplet
+      xwayland
+      wl-clipboard
+      cliphist
 
-    mako
-    wf-recorder
-    alacritty
-    killall
-    pamixer
-    swaylock
-    tailscale
-    wlr-randr
-    nordzy-cursor-theme
-    upower
-    pulseaudio
-    kdePackages.bluedevil
-    #zed-editor
-    bruno
-    beekeeper-studio
-    turso-cli
-    sqld
-    kdePackages.dolphin
-    kdePackages.okular
-    kdePackages.gwenview
-    kdePackages.qtwayland
-    kdePackages.breeze
-    kdePackages.breeze-gtk
-    kdePackages.breeze-icons
-    kdePackages.qt6ct
-    kdePackages.qtstyleplugin-kvantum
-    pm2
+      wofi
+      pavucontrol
+      networkmanagerapplet
 
-    vulkan-tools
-    vulkan-loader
-    vulkan-headers
-    # cinnamon.nemo
-    # cinnamon.nemo-with-extensions
-    # gnome.nautilus
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-  ]) ++ (with pkgs-unstable; [
-    helix
-    postman
-  ]);
+      mako
+      wf-recorder
+      alacritty
+      killall
+      pamixer
+      swaylock
+      tailscale
+      wlr-randr
+      nordzy-cursor-theme
+      upower
+      pulseaudio
+      kdePackages.bluedevil
+      #zed-editor
+      bruno
+      beekeeper-studio
+      turso-cli
+      sqld
+      kdePackages.dolphin
+      kdePackages.okular
+      kdePackages.gwenview
+      kdePackages.qtwayland
+      kdePackages.breeze
+      kdePackages.breeze-gtk
+      kdePackages.breeze-icons
+      kdePackages.qt6ct
+      kdePackages.qtstyleplugin-kvantum
+      pm2
+
+      vulkan-tools
+      vulkan-loader
+      vulkan-headers
+      # cinnamon.nemo
+      # cinnamon.nemo-with-extensions
+      # gnome.nautilus
+      # # You can also create simple shell scripts directly inside your
+      # # configuration. For example, this adds a command 'my-hello' to your
+      # # environment:
+      # (pkgs.writeShellScriptBin "my-hello" ''
+      #   echo "Hello, ${config.home.username}!"
+      # '')
+    ]) ++ (with pkgs-unstable; [
+      helix
+      postman
+    ]);
 
   services.flameshot = {
     enable = true;
     package = pkgs-unstable.flameshot.override {
-    enableWlrSupport = true;
+      enableWlrSupport = true;
     };
   };
 
@@ -194,7 +197,7 @@
 
   programs.git = {
     enable = true;
-    userName  = "Nithin Reddy";
+    userName = "Nithin Reddy";
     userEmail = "reddy.nithinpg@gmail.com";
     extraConfig = {
       credential = {
@@ -298,7 +301,7 @@
           };
         };
         listener = [
-           {
+          {
             timeout = 65;
             command = "${pkgs.libnotify}/bin/notify-send 'Locking in 15 seconds' -t 10000";
           }
@@ -340,6 +343,16 @@
   #     pkgs.xdg-desktop-portal
   #   ];
   # };
-
+  home.file.".local/bin/xdg-open" = {
+    text = ''
+      #!/usr/bin/env bash
+      if [ ! -e /run/.containerenv ] && [ ! -e /.dockerenv ]; then # if not inside a container
+          /run/current-system/sw/bin/xdg-open "$@" # run xdg-open normally
+      else
+          distrobox-host-exec /run/current-system/sw/bin/xdg-open "$@" # run xdg-open on the host
+      fi
+    '';
+    executable = true; # Makes the file executable
+  };
 
 }
