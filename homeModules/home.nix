@@ -327,7 +327,6 @@
     ./zsh.nix
     ./hyprland/default.nix
     ./waybar/default.nix
-    ./qt.nix
     ./swww.nix
   ];
 
