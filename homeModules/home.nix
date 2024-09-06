@@ -33,72 +33,72 @@
       # firefox
       # chromium
       # Programming related
+      beekeeper-studio
+      bruno
+      bun
+      direnv
+      distrobox
       git
+      mongodb-tools
       nil
       nixd
-      direnv
-      ripgrep
-      nodejs_20
       nodePackages.pnpm
-      yarn-berry
-      bun
-      mongodb-tools
+      nodejs_20
+      pm2
+      ripgrep
+      sqld
       sqlite
       sqlitebrowser
       turso-cli
-      sqld
-      pm2
-      vulkan-tools
-      vulkan-loader
       vulkan-headers
-      bruno
-      beekeeper-studio
-      distrobox
+      vulkan-loader
+      vulkan-tools
+      yarn-berry
 
 
       # Non-programming related
-      zsh-fhs
-      htop
-      neofetch
-      wget
-      curl
-      nerdfonts
-      sshpass
-      kitty
+      alacritty
       bat
-      zellij
+      brightnessctl
+      cliphist
+      curl
       eza
       fd
-      starship
-      zoxide
-      hyperfine
-      xorg.xprop
-      xautolock
-      libnotify
-      i3lock
       gparted
-      brightnessctl
-      iperf
-      mongodb-compass
-      hplip
-      swww
-      waybar
       grim
       grimblast
-      xwayland
-      wl-clipboard
-      cliphist
-      pavucontrol
-      networkmanagerapplet
-      mako
-      wf-recorder
-      alacritty
+      hplip
+      htop
+      hyperfine
+      i3lock
+      iperf
       killall
+      kitty
+      libnotify
+      mako
+      mongodb-compass
+      neofetch
+      nerdfonts
+      networkmanagerapplet
       pamixer
-      tailscale
-      wlr-randr
-      upower
+      pavucontrol
       pulseaudio
+      sshpass
+      starship
+      swww
+      tailscale
+      upower
+      waybar
+      wf-recorder
+      wget
+      wl-clipboard
+      wlr-randr
+      xautolock
+      xorg.xprop
+      xwayland
+      zellij
+      zoxide
+      zsh-fhs
     ]) ++ (with pkgs-unstable; [
       helix
     ]);
@@ -112,15 +112,17 @@
   programs.home-manager.enable = true;
 
   imports = [
-    ./zsh.nix
-    ./hyprland/default.nix
-    ./waybar/default.nix
-    ./swww.nix
-    ./awesome.nix
-    ./binaries.nix
-    ./cursor.nix
-    ./gtk.nix
-    ./lockscreen.nix
-    ./flameshot.nix
+  ./awesome.nix
+  ./binaries.nix
+  ./cursor.nix
+  ./flameshot.nix
+  ./git.nix
+  ./gtk.nix
+  ./hyprland/default.nix
+  ./kde.nix
+  ./lockscreen.nix
+  ./swww.nix
+  ./waybar/default.nix
+  ./zsh.nix
   ];
 }
