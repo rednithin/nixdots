@@ -4,8 +4,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
   home.username = "nithin";
   home.homeDirectory = "/home/nithin";
 
@@ -16,20 +14,15 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "23.11"; # Please read the comment before changing.
+  home.stateVersion = "24.11"; # Please read the comment before changing.
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
   home.packages =
     let
-      # zed-editor = pkgs-unstable.zed-editor.overrideAttrs ({
-      #   version = "0.147.2";
-      # });
       zsh-fhs = pkgs.buildFHSUserEnv {
         name = "zshfhs";
         targetPkgs = pkgs:
           with pkgs; [
-
+            curl
           ];
         runScript = "zsh";
       };
@@ -39,20 +32,8 @@
       # # "Hello, world!" when run.
       # firefox
       # chromium
-      zsh-fhs
-      fastfetch
-      hello
-      zip
-      unzip
-      htop
-      neofetch
-      screenfetch
-      wget
-      curl
-      # vscode
+      # Programming related
       git
-      kate
-      lapce
       nil
       nixd
       direnv
@@ -60,17 +41,30 @@
       nodejs_20
       nodePackages.pnpm
       yarn-berry
-      # floorp
-      # # It is sometimes useful to fine-tune packages, for example, by applying
-      # # overrides. You can do that directly here, just don't forget the
-      # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-      # # fonts?
-      # (nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+      bun
+      mongodb-tools
+      sqlite
+      sqlitebrowser
+      turso-cli
+      sqld
+      pm2
+      vulkan-tools
+      vulkan-loader
+      vulkan-headers
+      bruno
+      beekeeper-studio
+      distrobox
+
+
+      # Non-programming related
+      zsh-fhs
+      htop
+      neofetch
+      wget
+      curl
       nerdfonts
       sshpass
-      bun
-      nitrogen
-      wezterm
+      kitty
       bat
       zellij
       eza
@@ -80,125 +74,42 @@
       hyperfine
       xorg.xprop
       xautolock
-      # (flameshot.overrideAttrs {enableWlrSupport = true;})
-      # davinci-resolve-studio
       libnotify
       i3lock
-      insomnia
       gparted
-      isoimagewriter
       brightnessctl
-      blanket
       iperf
       mongodb-compass
-      mongodb-tools
-      sqlite
-      sqlitebrowser
       hplip
-      distrobox
-
       swww
       waybar
       grim
       grimblast
-
       xwayland
       wl-clipboard
       cliphist
-
-      wofi
       pavucontrol
       networkmanagerapplet
-
       mako
       wf-recorder
       alacritty
       killall
       pamixer
-      swaylock
       tailscale
       wlr-randr
-      nordzy-cursor-theme
       upower
       pulseaudio
-      kdePackages.bluedevil
-      #zed-editor
-      bruno
-      beekeeper-studio
-      turso-cli
-      sqld
-      kdePackages.dolphin
-      kdePackages.okular
-      kdePackages.gwenview
-      kdePackages.qtwayland
-      kdePackages.breeze
-      kdePackages.breeze-gtk
-      kdePackages.breeze-icons
-      kdePackages.qt6ct
-      kdePackages.qtstyleplugin-kvantum
-      pm2
-
-      vulkan-tools
-      vulkan-loader
-      vulkan-headers
-      # cinnamon.nemo
-      # cinnamon.nemo-with-extensions
-      # gnome.nautilus
-      # # You can also create simple shell scripts directly inside your
-      # # configuration. For example, this adds a command 'my-hello' to your
-      # # environment:
-      # (pkgs.writeShellScriptBin "my-hello" ''
-      #   echo "Hello, ${config.home.username}!"
-      # '')
     ]) ++ (with pkgs-unstable; [
       helix
-      postman
     ]);
 
-  services.flameshot = {
-    enable = true;
-    package = pkgs-unstable.flameshot.override {
-      enableWlrSupport = true;
-    };
-  };
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
-
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. If you don't want to manage your shell through Home
-  # Manager then you have to manually source 'hm-session-vars.sh' located at
-  # either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/nithin/etc/profile.d/hm-session-vars.sh
-  #
   home.sessionVariables = {
     EDITOR = "hx";
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-
-
-
-
 
   imports = [
     ./zsh.nix
@@ -210,8 +121,6 @@
     ./cursor.nix
     ./gtk.nix
     ./lockscreen.nix
+    ./flameshot.nix
   ];
-
-
-
 }
