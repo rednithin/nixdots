@@ -1,4 +1,4 @@
-{}: {
+{...}: {
   home.file.".ssh/config".text = ''
     Host github.com
       User nithin

@@ -1,4 +1,4 @@
-{}: {
+{...}: {
   home.file = {
     ".local/bin/xdg-open" = {
       text = ''

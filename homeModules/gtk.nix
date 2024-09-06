@@ -1,4 +1,4 @@
-{ pkgs }: {
+{ pkgs, ... }: {
   gtk = {
     enable = true;
     font = { name = "NotoSans Nerd Font"; };

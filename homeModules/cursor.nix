@@ -1,4 +1,4 @@
-{ pkgs }: {
+{ pkgs, ... }: {
   home.pointerCursor = {
     package = pkgs.nordzy-cursor-theme;
     name = "Nordzy-cursors";
