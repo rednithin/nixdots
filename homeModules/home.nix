@@ -76,7 +76,7 @@
       libnotify
       mako
       mongodb-compass
-      neofetch
+      fastfetch
       nerdfonts
       networkmanagerapplet
       pamixer
