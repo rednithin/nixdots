@@ -111,26 +111,6 @@
         profile = "${pkgs.firejail}/etc/firejail/brave.profile";
         desktop = "${pkgs.brave}/share/applications/brave-browser.desktop";
       };
-      spotify = {
-        executable = "${pkgs.lib.getBin pkgs.spotify}/bin/spotify";
-        profile = "${pkgs.firejail}/etc/firejail/spotify.profile";
-        desktop = "${pkgs.spotify}/share/applications/spotify.desktop";
-      };
-      # postman = {
-      #   executable = "${pkgs-unstable.lib.getBin pkgs-unstable.postman}/bin/postman";
-      #   profile = "${pkgs-unstable.firejail}/etc/firejail/Postman.profile";
-      #   desktop = "${pkgs-unstable.postman}/share/applications/postman.desktop";
-      # };
-      # steam = {
-      #   executable = "${pkgs.lib.getBin pkgs.steam}/bin/steam";
-      #   profile = "${pkgs.firejail}/etc/firejail/steam.profile";
-      #   desktop = "${pkgs.steam}/share/applications/steam.desktop";
-      # };
-      # steam-run = {
-      #   executable = "${pkgs.lib.getBin pkgs.steam-run}/bin/steam-run";
-      #   profile = "${pkgs.firejail}/etc/firejail/steam-run.profile";
-      #   # desktop = "${pkgs.steam-run}/share/applications/steam-run.desktop";
-      # };
     };
   };
 

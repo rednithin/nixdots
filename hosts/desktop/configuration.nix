@@ -85,7 +85,6 @@
         packages = with pkgs; [
           chromium
           firefox
-          spotify
           brave
         ];
       in
