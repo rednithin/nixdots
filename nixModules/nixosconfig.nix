@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, pkgs-unstable,  ... }:
+{ config, pkgs, inputs, pkgs-unstable, ... }:
 
 {
 
@@ -17,7 +17,7 @@
   services.flatpak.enable = true;
   programs.nix-ld.enable = false;
   programs.nix-ld.package = pkgs-unstable.nix-ld-rs;
-#   hardware.nvidia-container-toolkit.enable = true;
+  #   hardware.nvidia-container-toolkit.enable = true;
   programs.nix-ld.libraries = with pkgs-unstable; [
     # Add any missing dynamic libraries for unpackaged programs
     # here, NOT in environment.systemPackages
@@ -60,28 +60,28 @@
   programs.mtr.enable = true;
 
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-#   virtualisation.docker = {
-#     enable = true;
-#     extraOptions = ''--insecure-registry "http://139.59.219.55:5000" --insecure-registry "http://192.168.0.232:5000"'';
-#   };
-#   users.users.nithin.extraGroups = [ "docker" ];
+  #   virtualisation.docker = {
+  #     enable = true;
+  #     extraOptions = ''--insecure-registry "http://139.59.219.55:5000" --insecure-registry "http://192.168.0.232:5000"'';
+  #   };
+  #   users.users.nithin.extraGroups = [ "docker" ];
 
   # Enable common container config files in /etc/containers
 
-#   virtualisation.containers.enable = true;
-#   virtualisation = {
-#     podman = {
-#       enable = true;
-#
-#       # Create a `docker` alias for podman, to use it as a drop-in replacement
-# #       dockerCompat = true;
-#
-#       # Required for containers under podman-compose to be able to talk to each other.
-#       defaultNetwork.settings.dns_enabled = true;
-#     };
-#   };
+  #   virtualisation.containers.enable = true;
+  #   virtualisation = {
+  #     podman = {
+  #       enable = true;
+  #
+  #       # Create a `docker` alias for podman, to use it as a drop-in replacement
+  # #       dockerCompat = true;
+  #
+  #       # Required for containers under podman-compose to be able to talk to each other.
+  #       defaultNetwork.settings.dns_enabled = true;
+  #     };
+  #   };
 
 
 
@@ -201,7 +201,7 @@
 
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -278,7 +278,8 @@
   # };
 
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./podman.nix
     ];
 }

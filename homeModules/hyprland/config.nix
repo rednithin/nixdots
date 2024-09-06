@@ -1,4 +1,4 @@
-{ ... }: 
+{ ... }:
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -34,12 +34,12 @@
         "SDL_VIDEODRIVER,wayland"
       ];
 
-      monitor= [
+      monitor = [
         "DVI-D-1, 2450x1440, 1920x0, 1"
         "HDMI-A-1, 1920x1080, 0x0, 1"
         "Unknown-1, disable"
       ];
-      
+
       # autostart
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
@@ -47,7 +47,7 @@
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "/usr/lib/polkit-kde-authentication-agent-1"
 
-        
+
         "waybar &"
         "wl-paste --type text --watch cliphist store &"
         "wl-paste --type image --watch cliphist store &"

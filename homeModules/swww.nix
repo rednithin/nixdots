@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   set-random-wallpaper = pkgs.writeShellScriptBin "set-random-wallpaper" ''
     # export SWWW_TRANSITION_FPS=60
     # export SWWW_TRANSITION_STEP=90 # 2
@@ -18,10 +19,11 @@
     swww init
     # ${set-random-wallpaper}/bin/set-random-wallpaper
   '';
-in {
-    home.packages = [pkgs.swww set-random-wallpaper init-swww-with-wallpaper wallpaper-randomizer];
-    wayland.windowManager.hyprland.extraConfig = ''
-        exec-once=init-swww-with-wallpaper
-        exec-once=wallpaper-randomizer
-    '';
+in
+{
+  home.packages = [ pkgs.swww set-random-wallpaper init-swww-with-wallpaper wallpaper-randomizer ];
+  wayland.windowManager.hyprland.extraConfig = ''
+    exec-once=init-swww-with-wallpaper
+    exec-once=wallpaper-randomizer
+  '';
 }
