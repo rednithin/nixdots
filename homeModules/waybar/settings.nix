@@ -30,7 +30,7 @@
       calendar = {
         format = { today = "<span color='#b4befe'><b><u>{}</u></b></span>"; };
       };
-      #  
+      # 
       format = "{:%d/%m/%Y %H:%M:%S}";
       tooltip = "true";
       tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
@@ -113,8 +113,8 @@
     };
     "custom/launcher" = {
       format = "";
-      on-click = "pkill wofi || wofi --show drun";
-      on-click-right = "pkill wofi || wallpaper-picker";
+      on-click = "pkill rofi || rofi -show drun";
+      on-click-right = "pkill rofi || wallpaper-picker";
       tooltip = "false";
     };
     "custom/batteryrate" = {

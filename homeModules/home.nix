@@ -93,6 +93,7 @@
       wget
       wl-clipboard
       wlr-randr
+      rofi-wayland
       xautolock
       xorg.xprop
       xwayland
