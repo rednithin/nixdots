@@ -73,7 +73,6 @@
       i3lock
       iperf
       killall
-      kitty
       libnotify
       mako
       mongodb-compass
@@ -125,5 +124,6 @@
     ./swww.nix
     ./waybar/default.nix
     ./zsh.nix
+    ./terminal.nix
   ];
 }
