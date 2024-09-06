@@ -20,7 +20,7 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = let 
+  home.packages = let
     # zed-editor = pkgs-unstable.zed-editor.overrideAttrs ({
     #   version = "0.147.2";
     # });
@@ -28,8 +28,8 @@
     name = "zshfhs";
     targetPkgs = pkgs:
       with pkgs; [
-        flatpak libxkbcommon wayland xkeyboard_config vulkan-loader
-      ];
+        flatpak libxkbcommon wayland xkeyboard_config vulkan-loader 
+    ];
     runScript = "zsh";
   };
   in (with pkgs; [
@@ -47,7 +47,7 @@
     screenfetch
     wget
     curl
-    vscode
+    # vscode
     git
     kate
     lapce
@@ -77,8 +77,8 @@
     hyperfine
     xorg.xprop
     xautolock
-    flameshot
-    davinci-resolve-studio
+    # (flameshot.overrideAttrs {enableWlrSupport = true;})
+    # davinci-resolve-studio
     libnotify
     i3lock
     insomnia
@@ -92,6 +92,7 @@
     sqlite
     sqlitebrowser
     hplip
+    distrobox
 
     swww
     waybar
@@ -105,7 +106,7 @@
     wofi
     pavucontrol
     networkmanagerapplet
-    
+
     mako
     wf-recorder
     alacritty
@@ -118,7 +119,7 @@
     upower
     pulseaudio
     kdePackages.bluedevil
-    zed-editor
+    #zed-editor
     bruno
     beekeeper-studio
     turso-cli
@@ -133,6 +134,10 @@
     kdePackages.qt6ct
     kdePackages.qtstyleplugin-kvantum
     pm2
+
+    vulkan-tools
+    vulkan-loader
+    vulkan-headers
     # cinnamon.nemo
     # cinnamon.nemo-with-extensions
     # gnome.nautilus
@@ -146,6 +151,13 @@
     helix
     postman
   ]);
+
+  services.flameshot = {
+    enable = true;
+    package = pkgs-unstable.flameshot.override {
+    enableWlrSupport = true;
+    };
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -272,7 +284,7 @@
     gtk.enable = true;
     size = 26;
   };
-  
+
   services = {
     hypridle = {
       settings = {
@@ -329,5 +341,5 @@
   #   ];
   # };
 
- 
+
 }
