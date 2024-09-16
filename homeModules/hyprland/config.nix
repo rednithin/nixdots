@@ -33,13 +33,7 @@
         "MOZ_ENABLE_WAYLAND,1"
         "SDL_VIDEODRIVER,wayland"
       ];
-
-      monitor = [
-        "DVI-D-1, 2450x1440, 1920x0, 1"
-        "HDMI-A-1, 1920x1080, 0x0, 1"
-        "Unknown-1, disable"
-      ];
-
+      
       # autostart
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
@@ -69,7 +63,7 @@
       };
 
       general = {
-        "$mainMod" = "SUPER";
+        "$mainMod" = "ALT_L";
         layout = "dwindle";
         gaps_in = 5;
         gaps_out = 10;
