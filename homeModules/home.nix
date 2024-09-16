@@ -1,11 +1,9 @@
-{ pkgs, pkgs-unstable, lib, config, ... }:
+{ pkgs, pkgs-unstable, ... }:
 
 {
 
   nixpkgs.config.allowUnfree = true;
 
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
   home.username = "nithin";
   home.homeDirectory = "/home/nithin";
 
@@ -16,145 +14,96 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "23.11"; # Please read the comment before changing.
+  home.stateVersion = "24.11"; # Please read the comment before changing.
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = (with pkgs; [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # firefox
-    # chromium
-    fastfetch
-    hello
-    zip
-    unzip
-    htop
-    neofetch
-    screenfetch
-    wget
-    curl
-    vscode
-    git
-    kate
-    lapce
-    nil
-    direnv
-    ripgrep
-    nodejs_20
-    nodePackages.pnpm
-    yarn-berry
-    # floorp
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-    nerdfonts
-    sshpass
-    bun
-    nitrogen
-    wezterm
-    bat
-    zellij
-    eza
-    fd
-    starship
-    zoxide
-    hyperfine
-    xorg.xprop
-    xautolock
-    flameshot
-    davinci-resolve-studio
-    libnotify
-    i3lock
-    insomnia
-    gparted
-    isoimagewriter
-    brightnessctl
-    blanket
-    iperf
-    mongodb-compass
-    mongodb-tools
-    sqlite
-    sqlitebrowser
-    hplip
+  home.packages =
+    let
+      zsh-fhs = pkgs.buildFHSUserEnv {
+        name = "zshfhs";
+        targetPkgs = pkgs:
+          with pkgs; [
+            curl
+          ];
+        runScript = "zsh";
+      };
+    in
+    (with pkgs; [
+      # # Adds the 'hello' command to your environment. It prints a friendly
+      # # "Hello, world!" when run.
+      # firefox
+      # chromium
+      # Programming related
+      beekeeper-studio
+      bruno
+      bun
+      direnv
+      distrobox
+      git
+      mongodb-tools
+      nil
+      nixd
+      nodePackages.pnpm
+      nodejs_20
+      pm2
+      ripgrep
+      sqld
+      sqlite
+      sqlitebrowser
+      turso-cli
+      vulkan-headers
+      vulkan-loader
+      vulkan-tools
+      yarn-berry
 
-    swww
-    waybar
-    grim
-    grimblast
 
-    xwayland
-    wl-clipboard
-    cliphist
+      # Non-programming related
+      alacritty
+      bat
+      brightnessctl
+      cliphist
+      curl
+      eza
+      fd
+      gparted
+      grim
+      grimblast
+      hplip
+      htop
+      hyperfine
+      i3lock
+      iperf
+      killall
+      libnotify
+      mako
+      mongodb-compass
+      fastfetch
+      nerdfonts
+      networkmanagerapplet
+      pamixer
+      pavucontrol
+      pulseaudio
+      sshpass
+      starship
+      swww
+      tailscale
+      upower
+      waybar
+      wf-recorder
+      wget
+      wl-clipboard
+      wlr-randr
+      rofi-wayland
+      xautolock
+      xorg.xprop
+      xwayland
+      zellij
+      zoxide
+      zsh-fhs
+    ]) ++ (with pkgs-unstable; [
+      helix
+    ]);
 
-    wofi
-    pavucontrol
-    networkmanagerapplet
-    
-    mako
-    wf-recorder
-    alacritty
-    killall
-    pamixer
-    swaylock
-    tailscale
-    wlr-randr
-    nordzy-cursor-theme
-    upower
-    pulseaudio
-    kdePackages.bluedevil
-    zed-editor
-    kdePackages.dolphin
-    kdePackages.okular
-    kdePackages.gwenview
-    kdePackages.qtwayland
-    kdePackages.breeze
-    kdePackages.breeze-gtk
-    kdePackages.breeze-icons
-    kdePackages.qt6ct
-    kdePackages.qtstyleplugin-kvantum
-    # cinnamon.nemo
-    # cinnamon.nemo-with-extensions
-    # gnome.nautilus
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-  ]) ++ (with pkgs-unstable; [
-    helix
-    postman
-  ]);
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
-
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. If you don't want to manage your shell through Home
-  # Manager then you have to manually source 'hm-session-vars.sh' located at
-  # either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/nithin/etc/profile.d/hm-session-vars.sh
-  #
   home.sessionVariables = {
     EDITOR = "hx";
   };
@@ -162,154 +111,19 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.git = {
-    enable = true;
-    userName  = "Nithin Reddy";
-    userEmail = "reddy.nithinpg@gmail.com";
-    extraConfig = {
-      credential = {
-        helper = "store";
-      };
-    };
-  };
-
-  home.file = {
-    ".config/awesome" = {
-      recursive = true;
-      source = ../dotfiles/awesome;
-    };
-
-    # ".steam/steam/steam_dev.cfg".text = ''
-    #   unShaderBackgroundProcessingThreads 12
-    # '';
-
-    ".ssh/config".text = ''
-      Host github.com
-        User nithin
-        Hostname github.com
-        PreferredAuthentications publickey
-        IdentityFile /home/nithin/.ssh/github
-    '';
-  };
-
-  programs.swaylock = {
-    enable = true;
-    settings = {
-      color = "000000";
-      font-size = 24;
-      indicator-idle-visible = false;
-      indicator-radius = 100;
-      line-color = "ffffff";
-      show-failed-attempts = true;
-    };
-  };
-
-  # services.swayidle = {
-  #   enable = true;
-  #   timeouts = [
-  #     {
-  #       timeout = 65;
-  #       command = "${pkgs.libnotify}/bin/notify-send 'Locking in 15 seconds' -t 10000";
-  #     }
-  #     {
-  #       timeout = 70;
-  #       command = "${pkgs.swaylock}/bin/swaylock";
-  #     }
-  #     {
-  #       timeout = 85;
-  #       command = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
-  #       resumeCommand = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
-  #     }
-  #   ];
-  #   events = [
-  #     {
-  #       event = "before-sleep";
-  #       command = "${pkgs.swaylock}/bin/swaylock";
-  #     }
-  #   ];
-  #   systemdTarget = "hyprland-session.target";
-  # };
-
-  gtk = {
-    enable = true;
-    font = { name = "NotoSans Nerd Font"; };
-    theme = {
-      name = "Breeze-Dark";
-      package = pkgs.kdePackages.breeze-gtk;
-    };
-    iconTheme = {
-      package = pkgs.kdePackages.breeze-icons;
-      name = "Breeze Dark";
-    };
-    cursorTheme = {
-      package = pkgs.nordzy-cursor-theme;
-      name = "Nordzy-cursors";
-      size = 26;
-    };
-  };
-
-  home.pointerCursor = {
-    package = pkgs.nordzy-cursor-theme;
-    name = "Nordzy-cursors";
-    gtk.enable = true;
-    size = 26;
-  };
-  
-  services = {
-    hypridle = {
-      settings = {
-        general = {
-          after_sleep_cmd = "hyprctl dispatch dpms on";
-          ignore_dbus_inhibit = false;
-          lock_cmd = "hyprlock";
-          starship = {
-            enable = true;
-            package = pkgs.starship;
-          };
-        };
-        listener = [
-           {
-            timeout = 65;
-            command = "${pkgs.libnotify}/bin/notify-send 'Locking in 15 seconds' -t 10000";
-          }
-          {
-            timeout = 80;
-            on-timeout = "hyprlock";
-          }
-          {
-            timeout = 120;
-            on-timeout = "hyprctl dispatch dpms off";
-            on-resume = "hyprctl dispatch dpms on";
-          }
-        ];
-      };
-    };
-  };
-
-
-
-  # systemd.user.services.swayidle.Install.WantedBy = lib.mkForce ["hyprland-session.target"];
-
   imports = [
-    ./zsh.nix
+    ./awesome.nix
+    ./binaries.nix
+    ./cursor.nix
+    ./flameshot.nix
+    ./git.nix
+    ./gtk.nix
     ./hyprland/default.nix
-    ./waybar/default.nix
-    ./qt.nix
+    ./kde.nix
+    ./lockscreen.nix
     ./swww.nix
+    ./waybar/default.nix
+    ./zsh.nix
+    ./terminal.nix
   ];
-
-  # xdg.portal = {
-  #   enable = true;
-  #   extraPortals = [
-  #     pkgs.xdg-desktop-portal-kde
-  #     pkgs.xdg-desktop-portal
-  #   ];
-  #   configPackages = [
-  #     pkgs.xdg-desktop-portal-kde
-  #     pkgs.xdg-desktop-portal-hyprland
-  #     pkgs.xdg-desktop-portal
-  #   ];
-  # };
-
- 
 }

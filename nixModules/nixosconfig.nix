@@ -1,17 +1,37 @@
-{ config, pkgs, inputs, pkgs-unstable,  ... }:
+{ config, pkgs, inputs, pkgs-unstable, ... }:
 
 {
 
   users.users.nithin.shell = pkgs.zsh;
+
+  users.extraUsers.nithin = {
+    subUidRanges = [{ startUid = 100000; count = 65536; }];
+    subGidRanges = [{ startGid = 100000; count = 65536; }];
+  };
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
   services.xserver.windowManager.awesome.enable = true;
   services.tailscale.enable = true;
-  
+  services.flatpak.enable = true;
+  programs.nix-ld.enable = false;
+  programs.nix-ld.package = pkgs-unstable.nix-ld-rs;
+  #   hardware.nvidia-container-toolkit.enable = true;
+  programs.nix-ld.libraries = with pkgs-unstable; [
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
+    stdenv.cc.cc
+    zlib
+    fuse3
+    icu
+    nss
+    openssl
+    curl
+    expat
+  ];
 
-  
+
   environment.sessionVariables = {
     # If your cursor becomes invisible
     WLR_NO_HARDWARE_CURSORS = "1";
@@ -27,9 +47,9 @@
   };
 
 
-  programs.fish.enable = true; 
-  programs.zsh.enable = true; 
-  
+  programs.fish.enable = true;
+  programs.zsh.enable = true;
+
   # Enable OpenGL
   hardware.graphics = {
     enable = true;
@@ -40,16 +60,31 @@
   programs.mtr.enable = true;
 
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  virtualisation.docker = {
-    enable = true;
-    extraOptions = ''--insecure-registry "http://139.59.219.55:5000" --insecure-registry "http://192.168.0.232:5000"'';
-  };
-  users.users.nithin.extraGroups = [ "docker" ];
+  #   virtualisation.docker = {
+  #     enable = true;
+  #     extraOptions = ''--insecure-registry "http://139.59.219.55:5000" --insecure-registry "http://192.168.0.232:5000"'';
+  #   };
+  #   users.users.nithin.extraGroups = [ "docker" ];
 
-  
-  
+  # Enable common container config files in /etc/containers
+
+  #   virtualisation.containers.enable = true;
+  #   virtualisation = {
+  #     podman = {
+  #       enable = true;
+  #
+  #       # Create a `docker` alias for podman, to use it as a drop-in replacement
+  # #       dockerCompat = true;
+  #
+  #       # Required for containers under podman-compose to be able to talk to each other.
+  #       defaultNetwork.settings.dns_enabled = true;
+  #     };
+  #   };
+
+
+
   security.chromiumSuidSandbox.enable = true;
   programs.firejail = {
     enable = true;
@@ -76,34 +111,14 @@
         profile = "${pkgs.firejail}/etc/firejail/brave.profile";
         desktop = "${pkgs.brave}/share/applications/brave-browser.desktop";
       };
-      spotify = {
-        executable = "${pkgs.lib.getBin pkgs.spotify}/bin/spotify";
-        profile = "${pkgs.firejail}/etc/firejail/spotify.profile";
-        desktop = "${pkgs.spotify}/share/applications/spotify.desktop";
-      };
-      # postman = {
-      #   executable = "${pkgs-unstable.lib.getBin pkgs-unstable.postman}/bin/postman";
-      #   profile = "${pkgs-unstable.firejail}/etc/firejail/Postman.profile";
-      #   desktop = "${pkgs-unstable.postman}/share/applications/postman.desktop";
-      # };
-      # steam = {
-      #   executable = "${pkgs.lib.getBin pkgs.steam}/bin/steam";
-      #   profile = "${pkgs.firejail}/etc/firejail/steam.profile";
-      #   desktop = "${pkgs.steam}/share/applications/steam.desktop";
-      # };
-      # steam-run = {
-      #   executable = "${pkgs.lib.getBin pkgs.steam-run}/bin/steam-run";
-      #   profile = "${pkgs.firejail}/etc/firejail/steam-run.profile";
-      #   # desktop = "${pkgs.steam-run}/share/applications/steam-run.desktop";
-      # };
     };
   };
-  
+
   # environment.etc."firejail/firejail.config".source = pkgs.runCommandNoCC "firejail.config" {} ''
   #   sed ${pkgs.firejail}/etc/firejail/firejail.config -e "s/# browser-allow-drm no/browser-allow-drm yes/;s/# browser-disable-u2f yes/browser-disable-u2f no/;" > $out
   # '';
 
- 
+
   environment.etc."firejail/firefox.local".text = ''
     ignore noexec ''${HOME}
     ignore noroot
@@ -121,13 +136,14 @@
   nix.optimise.automatic = false;
   nix.optimise.dates = [ "03:45" ];
 
-  
+
   nix.gc = {
     automatic = false;
     dates = "weekly";
     options = "--delete-older-than 90d";
   };
 
+  environment.localBinInPath = true;
 
   # security.apparmor = {
   #   enable = true;
@@ -165,7 +181,7 @@
 
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -227,7 +243,7 @@
   #   services.randomwallpapersvc = {
   #     script = ''
   #       ${pkgs.zsh}/bin/zsh /home/nithin/.dotfiles/dotfiles/scripts/randomwallpaper.sh
-  #     ''; 
+  #     '';
   #     description = "Random Wallpaper";
   #     serviceConfig = {
   #       Type = "oneshot";
@@ -240,4 +256,10 @@
   #     timerConfig.OnCalendar = "minutely";
   #   };
   # };
+
+  imports =
+    [
+      # Include the results of the hardware scan.
+      ./podman.nix
+    ];
 }

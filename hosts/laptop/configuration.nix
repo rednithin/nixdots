@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../nixModules/nixosconfig.nix
       ../../nixModules/laptop.nix
@@ -62,7 +63,7 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  
+
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -108,9 +109,9 @@
     extraSpecialArgs = { inherit inputs; inherit pkgs-unstable; };
     users = {
       nithin = {
-        imports = [ 
+        imports = [
           ../../homeModules/home.nix
-          ../../homeModules/laptop.nix 
+          ../../homeModules/laptop.nix
         ];
       };
     };

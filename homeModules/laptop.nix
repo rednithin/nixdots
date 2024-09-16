@@ -1,17 +1,17 @@
-{...}:
+{ ... }:
 
 {
-    home.file = {
-        ".Xresources".text = ''
-            Xft.dpi: 200
+  home.file = {
+    ".Xresources".text = ''
+      Xft.dpi: 200
 
-            ! These might also be useful depending on your monitor and personal preference:
-            Xft.autohint: 0
-            Xft.lcdfilter:  lcddefault
-            Xft.hintstyle:  hintfull
-            Xft.hinting: 1
-            Xft.antialias: 1
-            Xft.rgba: rgb
-        '';
-    };
+      ! These might also be useful depending on your monitor and personal preference:
+      Xft.autohint: 0
+      Xft.lcdfilter:  lcddefault
+      Xft.hintstyle:  hintfull
+      Xft.hinting: 1
+      Xft.antialias: 1
+      Xft.rgba: rgb
+    '';
+  };
 }

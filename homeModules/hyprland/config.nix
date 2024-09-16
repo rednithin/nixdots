@@ -1,4 +1,4 @@
-{ ... }: 
+{ ... }:
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -34,12 +34,12 @@
         "SDL_VIDEODRIVER,wayland"
       ];
 
-      monitor= [
+      monitor = [
         "DVI-D-1, 2450x1440, 1920x0, 1"
         "HDMI-A-1, 1920x1080, 0x0, 1"
         "Unknown-1, disable"
       ];
-      
+
       # autostart
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
@@ -47,7 +47,7 @@
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "/usr/lib/polkit-kde-authentication-agent-1"
 
-        
+
         "waybar &"
         "wl-paste --type text --watch cliphist store &"
         "wl-paste --type image --watch cliphist store &"
@@ -137,11 +137,11 @@
         "$mainMod, F1, exec, show-keybinds"
 
         # keybindings
-        "$mainMod, Return, exec, alacritty"
+        "$mainMod, Return, exec, kitty"
         "$mainMod, Q, killactive,"
         "$mainMod, F, fullscreen, 0"
         "$mainMod, Space, togglefloating,"
-        "$mainMod, P, exec, pkill wofi || wofi --show drun"
+        "$mainMod, P, exec, pkill rofi || rofi -show drun"
         "$mainMod, Escape, exec, swaylock"
         "$mainMod, T, togglesplit,"
         "$mainMod SHIFT, B, exec, pkill -SIGUSR1 .waybar-wrapped"
@@ -221,7 +221,7 @@
         "$mainMod, XF86MonBrightnessDown, exec, brightnessctl set 100%-"
 
         # clipboard manager
-        "$mainMod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
+        "$mainMod, V, exec, cliphist list | rofi --dmenu | cliphist decode | wl-copy"
       ];
 
       # mouse binding
@@ -244,9 +244,9 @@
         "size 950 600,title:^(float_kitty)$"
         "float,audacious"
         "workspace 8 silent, audacious"
-        "pin,wofi"
-        "float,wofi"
-        "noborder,wofi"
+        "pin,rofi"
+        "float,rofi"
+        "noborder,rofi"
         "tile, neovide"
         "idleinhibit focus,mpv"
         "float,udiskie"

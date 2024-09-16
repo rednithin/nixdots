@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../nixModules/nixosconfig.nix
       ../../nixModules/desktop.nix
@@ -62,7 +63,7 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  
+
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -79,31 +80,30 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = [
-  (
-    let
-      packages = with pkgs; [
-        chromium
-        firefox
-        spotify
-        brave
-      ];
-    in
-    pkgs.runCommand "firejail-icons"
-      {
-        preferLocalBuild = true;
-        allowSubstitutes = false;
-        meta.priority = -1;
-      }
-      ''
-        mkdir -p "$out/share/icons"
-        ${lib.concatLines (map (pkg: ''
-          tar -C "${pkg}" -c share/icons -h --mode 0755 -f - | tar -C "$out" -xf -
-        '') packages)}
-        find "$out/" -type f -print0 | xargs -0 chmod 0444
-        find "$out/" -type d -print0 | xargs -0 chmod 0555
-      ''
-  )
-];
+    (
+      let
+        packages = with pkgs; [
+          chromium
+          firefox
+          brave
+        ];
+      in
+      pkgs.runCommand "firejail-icons"
+        {
+          preferLocalBuild = true;
+          allowSubstitutes = false;
+          meta.priority = -1;
+        }
+        ''
+          mkdir -p "$out/share/icons"
+          ${lib.concatLines (map (pkg: ''
+            tar -C "${pkg}" -c share/icons -h --mode 0755 -f - | tar -C "$out" -xf -
+          '') packages)}
+          find "$out/" -type f -print0 | xargs -0 chmod 0444
+          find "$out/" -type d -print0 | xargs -0 chmod 0555
+        ''
+    )
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
