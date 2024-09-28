@@ -99,6 +99,7 @@
       zellij
       zoxide
       zsh-fhs
+      wezterm
     ]) ++ (with pkgs-unstable; [
       helix
     ]);
