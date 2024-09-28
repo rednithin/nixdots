@@ -13,4 +13,4 @@ makepkg -si
 paru -S rustup libxkbcommon \
     vulkan-tools nvidia-open zed \
     vulkan-icd-loader nvidia-utils \
-    visual-studio-code-bin
+    visual-studio-code-bin ttf-fantasque-nerd
