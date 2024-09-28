@@ -1,11 +1,20 @@
 { ... }: {
-  home.file.".ssh/config".text = ''
-    Host github.com
-      User nithin
-      Hostname github.com
-      PreferredAuthentications publickey
-      IdentityFile /home/nithin/.ssh/github
-  '';
+  programs.ssh = {
+    enable = true;
+    extraConfig = ''
+      Host github.com
+        User nithin
+        Hostname github.com
+        PreferredAuthentications publickey
+        IdentityFile /home/nithin/.ssh/github
+      
+      Host gitea.initthyself.xyz
+        User nithin
+        Hostname gitea.initthyself.xyz
+        PreferredAuthentications publickey
+        IdentityFile /home/nithin/.ssh/gitea
+    '';
+  };
 
   programs.git = {
     enable = true;
