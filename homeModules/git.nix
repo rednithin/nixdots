@@ -8,6 +8,7 @@
 
   programs.ssh = {
     enable = true;
+    addKeysToAgent = "yes";
     extraConfig = ''
       Host github.com
         User nithin
