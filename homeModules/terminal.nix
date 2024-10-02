@@ -1,7 +1,7 @@
 { ... }: {
   programs.kitty = {
     enable = true;
-    theme = "Catppuccin-Mocha";
+    themeFile = "Catppuccin-Mocha";
     settings = {
       font_size = 14;
       font_family = "FantasqueSansM Nerd Font Mono Regular";
