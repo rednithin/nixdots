@@ -106,6 +106,11 @@
         profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
         desktop = "${pkgs.chromium}/share/applications/chromium-browser.desktop";
       };
+      google-chrome = {
+        executable = "${pkgs.lib.getBin pkgs.google-chrome}/bin/google-chrome-stable";
+        profile = "${pkgs.firejail}/etc/firejail/google-chrome.profile";
+        desktop = "${pkgs.google-chrome}/share/applications/google-chrome.desktop";
+      };
       brave = {
         executable = "${pkgs.lib.getBin pkgs.brave}/bin/brave";
         profile = "${pkgs.firejail}/etc/firejail/brave.profile";
