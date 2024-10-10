@@ -44,6 +44,7 @@
       nixd
       nodePackages.pnpm
       nodejs_20
+      deno
       pm2
       ripgrep
       sqld
