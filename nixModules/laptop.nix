@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  boot.kernelPackages = pkgs.linuxPackages_6_11;
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
 
   services.thermald.enable = true;
   powerManagement.enable = true;
@@ -17,12 +17,12 @@
   #     };
   # };
 
-  services.power-profiles-daemon.enable = false;
+  services.power-profiles-daemon.enable = true;
   services.upower = {
     enable = true;
   };
   services.tlp = {
-    enable = true;
+    enable = false;
     # settings = {
     #     CPU_SCALING_GOVERNOR_ON_AC = "performance";
     #     CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
@@ -41,11 +41,11 @@
     # };
   };
 
-  boot.postBootCommands = ''
-    #!/bin/bash
-        
-    for f in /proc/irq/*/smp_affinity_list; do echo 20-21 > $f; done
-  '';
+#   boot.postBootCommands = ''
+#     #!/bin/bash
+#
+#     for f in /proc/irq/*/smp_affinity_list; do echo 20-21 > $f; done
+#   '';
 
   # powerManagement.powertop.enable = true;
 }

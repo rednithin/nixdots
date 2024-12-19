@@ -2,16 +2,17 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, pkgs-unstable, home-manager, ... }:
+{ inputs, pkgs, home-manager, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
+
   imports =
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../nixModules/nixosconfig.nix
       ../../nixModules/laptop.nix
-      home-manager.nixosModules.default
     ];
 
   # Bootloader.
@@ -106,7 +107,7 @@
   system.stateVersion = "23.11"; # Did you read the comment?
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; inherit pkgs-unstable; };
+    extraSpecialArgs = { inherit inputs; inherit pkgs; };
     users = {
       nithin = {
         imports = [

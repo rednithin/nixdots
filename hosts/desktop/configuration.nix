@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, pkgs-unstable, pkgs, lib, home-manager, ... }:
+{ inputs, pkgs, pkgs, lib, home-manager, ... }:
 
 {
   imports =
@@ -134,7 +134,7 @@
 
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; inherit pkgs-unstable; };
+    extraSpecialArgs = { inherit inputs; inherit pkgs; };
     users = {
       nithin = {
         imports = [ ../../homeModules/home.nix ];

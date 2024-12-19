@@ -1,8 +1,8 @@
-{ config, pkgs, inputs, pkgs-unstable, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
 
-  boot.kernelPackages = pkgs.linuxPackages_6_11;
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
 
   fileSystems."/home/nithin/HDD" = {
     device = "/dev/disk/by-uuid/9f66e623-f475-40ad-8a7c-97518b4f0656";
@@ -43,4 +43,5 @@
   boot.kernelParams = [ "module_blacklist=amdgpu" ];
   hardware.nvidia.forceFullCompositionPipeline = true;
 
+  hardware.nvidia-container-toolkit.enable = true;
 }

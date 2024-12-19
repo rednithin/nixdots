@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 
 {
 
@@ -18,7 +18,7 @@
 
   home.packages =
     let
-      zsh-fhs = pkgs.buildFHSUserEnv {
+      zsh-fhs = pkgs.buildFHSEnv {
         name = "zshfhs";
         targetPkgs = pkgs:
           with pkgs; [
@@ -78,7 +78,15 @@
       mako
       mongodb-compass
       fastfetch
-      nerdfonts
+      nerd-fonts.noto
+      nerd-fonts.ubuntu
+      nerd-fonts.iosevka
+      nerd-fonts.zed-mono
+      nerd-fonts.fira-mono
+      nerd-fonts.fira-code
+      nerd-fonts.inconsolata
+      nerd-fonts.fantasque-sans-mono
+      nerd-fonts.jetbrains-mono
       networkmanagerapplet
       pamixer
       pavucontrol
@@ -101,8 +109,9 @@
       zoxide
       zsh-fhs
       wezterm
-    ]) ++ (with pkgs-unstable; [
       helix
+      vscode
+      zed-editor
     ]);
 
 

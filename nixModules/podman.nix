@@ -3,7 +3,6 @@
     enable = true;
   };
 
-  hardware.nvidia-container-toolkit.enable = true;
 
   virtualisation.podman = {
     enable = true;

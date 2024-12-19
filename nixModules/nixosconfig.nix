@@ -1,8 +1,10 @@
-{ config, pkgs, inputs, pkgs-unstable, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
 
   users.users.nithin.shell = pkgs.zsh;
+
+  services.desktopManager.cosmic.enable = true;
 
   users.extraUsers.nithin = {
     subUidRanges = [{ startUid = 100000; count = 65536; }];
@@ -15,21 +17,7 @@
   services.xserver.windowManager.awesome.enable = true;
   services.tailscale.enable = true;
   services.flatpak.enable = true;
-  programs.nix-ld.enable = false;
-  programs.nix-ld.package = pkgs-unstable.nix-ld-rs;
-  #   hardware.nvidia-container-toolkit.enable = true;
-  programs.nix-ld.libraries = with pkgs-unstable; [
-    # Add any missing dynamic libraries for unpackaged programs
-    # here, NOT in environment.systemPackages
-    stdenv.cc.cc
-    zlib
-    fuse3
-    icu
-    nss
-    openssl
-    curl
-    expat
-  ];
+
 
 
   environment.sessionVariables = {
