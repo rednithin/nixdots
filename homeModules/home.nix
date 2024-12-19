@@ -110,7 +110,7 @@
       zsh-fhs
       wezterm
       helix
-      vscode
+      vscode-fhs
       zed-editor
     ]);
 

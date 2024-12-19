@@ -83,9 +83,9 @@
     (
       let
         packages = with pkgs; [
-          chromium
+          # chromium
           firefox
-          brave
+          # brave
         ];
       in
       pkgs.runCommand "firejail-icons"

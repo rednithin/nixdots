@@ -22,10 +22,11 @@
 
   environment.sessionVariables = {
     # If your cursor becomes invisible
-    WLR_NO_HARDWARE_CURSORS = "1";
+    # WLR_NO_HARDWARE_CURSORS = "1";
+    TERM = "xterm-256color";
     # Hint electron apps to use wayland
-    NIXOS_OZONE_WL = "1";
-    XDG_CURRENT_DESKTOP = "KDE";
+    # NIXOS_OZONE_WL = "1";
+    # XDG_CURRENT_DESKTOP = "KDE";
   };
 
   services.avahi = {
@@ -89,21 +90,21 @@
       #  desktop = "${pkgs.floorp}/share/applications/floorp.desktop";
       #   # extraArgs = [ "--browser-allow-drm --browser-disable-u2f=no" ];
       # };
-      chromium = {
-        executable = "${pkgs.lib.getBin pkgs.chromium}/bin/chromium";
-        profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
-        desktop = "${pkgs.chromium}/share/applications/chromium-browser.desktop";
-      };
+      # chromium = {
+      #   executable = "${pkgs.lib.getBin pkgs.chromium}/bin/chromium";
+      #   profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
+      #   desktop = "${pkgs.chromium}/share/applications/chromium-browser.desktop";
+      # };
       google-chrome = {
         executable = "${pkgs.lib.getBin pkgs.google-chrome}/bin/google-chrome-stable";
         profile = "${pkgs.firejail}/etc/firejail/google-chrome.profile";
         desktop = "${pkgs.google-chrome}/share/applications/google-chrome.desktop";
       };
-      brave = {
-        executable = "${pkgs.lib.getBin pkgs.brave}/bin/brave";
-        profile = "${pkgs.firejail}/etc/firejail/brave.profile";
-        desktop = "${pkgs.brave}/share/applications/brave-browser.desktop";
-      };
+      # brave = {
+      #   executable = "${pkgs.lib.getBin pkgs.brave}/bin/brave";
+      #   profile = "${pkgs.firejail}/etc/firejail/brave.profile";
+      #   desktop = "${pkgs.brave}/share/applications/brave-browser.desktop";
+      # };
     };
   };
 
