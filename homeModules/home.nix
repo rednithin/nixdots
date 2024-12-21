@@ -112,6 +112,10 @@
       helix
       vscode-fhs
       zed-editor
+
+      xdg-utils
+      pass
+      oha
     ]);
 
 

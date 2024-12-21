@@ -6,6 +6,12 @@
 
   services.desktopManager.cosmic.enable = true;
 
+  # Configuration for X11 keymap
+  services.xserver = {
+    enable = true;
+    # xkbOptions = "altwin:swap_alt_win";
+  };
+
   users.extraUsers.nithin = {
     subUidRanges = [{ startUid = 100000; count = 65536; }];
     subGidRanges = [{ startGid = 100000; count = 65536; }];
