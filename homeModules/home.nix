@@ -34,7 +34,7 @@
       # chromium
       # Programming related
       beekeeper-studio
-      bruno
+      # bruno
       bun
       direnv
       distrobox
@@ -68,7 +68,7 @@
       gparted
       grim
       grimblast
-      hplip
+      # hplip
       htop
       hyperfine
       i3lock
