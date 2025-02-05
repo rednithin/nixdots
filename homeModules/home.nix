@@ -43,7 +43,7 @@
       nil
       nixd
       nodePackages.pnpm
-      nodejs_20
+      nodejs
       deno
       pm2
       ripgrep
