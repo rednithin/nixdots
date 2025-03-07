@@ -12,7 +12,7 @@
       kdePackages.qtstyleplugin-kvantum
       kdePackages.bluedevil
       kdePackages.ark
-      kate
+      kdePackages.kate
       isoimagewriter
     ]);
 }
