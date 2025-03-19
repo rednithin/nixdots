@@ -1,4 +1,4 @@
-{...}: {
+{ pkgs, ...}: {
   home.file.".local/share/icons/hicolor/16x16/apps/google-chrome.png".source = "${pkgs.google-chrome}/share/icons/hicolor/16x16/apps/google-chrome.png";
   home.file.".local/share/icons/hicolor/24x24/apps/google-chrome.png".source = "${pkgs.google-chrome}/share/icons/hicolor/24x24/apps/google-chrome.png";
   home.file.".local/share/icons/hicolor/32x32/apps/google-chrome.png".source = "${pkgs.google-chrome}/share/icons/hicolor/32x32/apps/google-chrome.png";
