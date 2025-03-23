@@ -134,7 +134,7 @@
     ./git.nix
     ./gtk.nix
     ./hyprland/default.nix
-    ./kde.nix
+    # ./kde.nix
     ./lockscreen.nix
     ./swww.nix
     ./waybar/default.nix
