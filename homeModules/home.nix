@@ -33,7 +33,7 @@
       # firefox
       # chromium
       # Programming related
-      beekeeper-studio
+      # beekeeper-studio
       # bruno
       bun
       direnv
