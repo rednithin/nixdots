@@ -42,8 +42,8 @@
       mongodb-tools
       nil
       nixd
-      nodePackages.pnpm
-      nodejs
+      nodePackages_latest.pnpm
+      nodejs_23
       deno
       pm2
       ripgrep
