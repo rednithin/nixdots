@@ -20,6 +20,9 @@
     # };
   };
 
+    users.users.nithin.extraGroups = [ "docker" ];
+
+
   environment.systemPackages = with pkgs; [
     distrobox
     podman-compose

@@ -58,26 +58,7 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  #   virtualisation.docker = {
-  #     enable = true;
-  #     extraOptions = ''--insecure-registry "http://139.59.219.55:5000" --insecure-registry "http://192.168.0.232:5000"'';
-  #   };
-  #   users.users.nithin.extraGroups = [ "docker" ];
-
-  # Enable common container config files in /etc/containers
-
-  #   virtualisation.containers.enable = true;
-  #   virtualisation = {
-  #     podman = {
-  #       enable = true;
-  #
-  #       # Create a `docker` alias for podman, to use it as a drop-in replacement
-  # #       dockerCompat = true;
-  #
-  #       # Required for containers under podman-compose to be able to talk to each other.
-  #       defaultNetwork.settings.dns_enabled = true;
-  #     };
-  #   };
+  
 
 
 
