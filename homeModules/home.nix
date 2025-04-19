@@ -112,6 +112,8 @@
       helix
       vscode-fhs
       zed-editor
+      mediawriter
+      popsicle
 
       xdg-utils
       pass
